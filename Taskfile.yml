@@ -1,0 +1,19 @@
+---
+version: "3"
+
+dotenv:
+  - .env
+
+vars:
+  kube_context: kind-homeops
+  repo:
+    sh: git config --get remote.origin.url
+
+tasks:
+  bootstrap:
+    cmds:
+      - |
+        argocd-autopilot repo bootstrap \
+          --repo {{.repo}} \
+          --git-token $ARGOCD_BOOTSTRAP_GIT_TOKEN \
+          --context {{.kube_context}}
