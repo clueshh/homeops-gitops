@@ -1,33 +1,42 @@
 ---
 version: "3"
 
-dotenv:
-  - .env
-
 vars:
-  kube_context: kind-homeops
+  KUBE_CONTEXT: kind-homeops
+  KIND_CLUSTER_NAME: homeops
+  KIND_KUBE_CONTEXT: kind-homeops
 
 tasks:
-  bootstrap:
+  kind:up:
+    desc: Create kind cluster
+    cmds:
+      - kind create cluster --name {{.KIND_CLUSTER_NAME}} --config kind-config.yml
+
+  kind:down:
+    desc: Delete kind cluster
+    cmds:
+      - kind delete cluster --name {{.KIND_CLUSTER_NAME}}
+
+  argocd:bootstrap:
     cmds:
       - |
         kubectl apply \
           --server-side \
-          --context {{.kube_context}} \
+          --context {{.KUBE_CONTEXT}} \
           -k configs/argocd
       - |
         kubectl apply \
-          --context {{.kube_context}} \
+          --context {{.KUBE_CONTEXT}} \
           -k configs/argocd-apps
 
-  uninstall:
+  argocd:uninstall:
     cmds:
-      - kubectl delete --context {{.kube_context}} -k configs/argocd
+      - kubectl delete --context {{.KUBE_CONTEXT}} -k configs/argocd
 
-  argocd-admin-password:
+  argocd:admin-password:
     cmds:
       - |
         kubectl get secret \
-          --context {{.kube_context}} \
+          --context {{.KUBE_CONTEXT}} \
           --namespace argocd \
           argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
