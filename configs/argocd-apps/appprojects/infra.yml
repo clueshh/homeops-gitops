@@ -7,6 +7,8 @@ metadata:
 spec:
   description: A project for infra things
   destinations:
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
     - namespace: kube-prometheus-stack
       server: https://kubernetes.default.svc
   sourceRepos:
