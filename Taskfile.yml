@@ -7,6 +7,11 @@ vars:
   KIND_KUBE_CONTEXT: kind-homeops
 
 tasks:
+  default:
+    desc: Show this help message
+    cmds:
+      - task --list-all
+
   kind:up:
     desc: Create kind cluster
     cmds:
@@ -18,6 +23,7 @@ tasks:
       - kind delete cluster --name {{.KIND_CLUSTER_NAME}}
 
   argocd:bootstrap:
+    desc: Bootstrap ArgoCD and the argocd-apps project
     cmds:
       - |
         kubectl apply \
@@ -30,10 +36,12 @@ tasks:
           -k configs/argocd-apps
 
   argocd:uninstall:
+    desc: Uninstall ArgoCD and the argocd-apps project
     cmds:
       - kubectl delete --context {{.KUBE_CONTEXT}} -k configs/argocd
 
   argocd:admin-password:
+    desc: Get the initial admin password for ArgoCD
     cmds:
       - |
         kubectl get secret \
