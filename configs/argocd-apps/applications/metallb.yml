@@ -9,6 +9,9 @@ spec:
     - repoURL: https://github.com/metallb/metallb
       path: config/native
       targetRevision: v0.15.3
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      path: configs/metallb
+      targetRevision: HEAD
   syncPolicy:
     automated:
       allowEmpty: true

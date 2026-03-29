@@ -1,0 +1,23 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: homeops-address-pool
+spec:
+  addresses:
+    # docker inspect kind | jq '.[].IPAM.Config'
+    # [
+    #   {
+    #     "Subnet": "fc00:f853:ccd:e793::/64",
+    #     "Gateway": "fc00:f853:ccd:e793::1"
+    #   },
+    #   {
+    #     "Subnet": "172.19.0.0/16",
+    #     "Gateway": "172.19.0.1"
+    #   }
+    # ]
+    - 172.19.255.1-172.19.255.64
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: homeops-l2-advertisement
