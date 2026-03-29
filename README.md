@@ -1,4 +1,4 @@
-# homeops-gitops
+# HomeOps GitOps
 
 A GitOps-driven repository for managing home Kubernetes infrastructure using ArgoCD.
 
