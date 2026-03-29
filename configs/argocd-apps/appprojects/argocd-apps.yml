@@ -1,0 +1,16 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd-apps
+  namespace: argocd
+spec:
+  description: This project is for the argocd-apps chart
+  destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - git@github.com:clueshh/homeops-gitops.git
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
