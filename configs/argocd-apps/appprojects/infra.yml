@@ -13,7 +13,7 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: traefik
       server: https://kubernetes.default.svc
-    - namespace: metallb
+    - namespace: metallb-system
       server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
