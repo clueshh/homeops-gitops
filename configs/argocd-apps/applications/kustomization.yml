@@ -6,3 +6,4 @@ resources:
   - argocd-apps.yml
   - kube-prometheus-stack.yml
   - traefik.yml
+  - metallb.yml

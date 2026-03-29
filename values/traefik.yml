@@ -6,9 +6,11 @@ ingressRoute:
     matchRule: Host(`dashboard.localhost`)
     entryPoints:
       - web
+
 providers:
   kubernetesGateway:
     enabled: true
+    
 gateway:
   listeners:
     web:

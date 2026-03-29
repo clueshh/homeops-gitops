@@ -13,10 +13,13 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: traefik
       server: https://kubernetes.default.svc
+    - namespace: metallb
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - ghcr.io/prometheus-community/charts
     - ghcr.io/traefik/helm
+    - https://github.com/metallb/metallb
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
