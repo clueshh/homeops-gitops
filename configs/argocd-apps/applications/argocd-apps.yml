@@ -7,7 +7,7 @@ spec:
   project: argocd-apps
   source:
     path: configs/argocd-apps
-    repoURL: git@github.com:clueshh/homeops-gitops.git
+    repoURL: https://github.com/clueshh/homeops-gitops.git
     targetRevision: HEAD
   syncPolicy:
     automated:
