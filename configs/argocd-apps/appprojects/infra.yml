@@ -16,7 +16,7 @@ spec:
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - ghcr.io/prometheus-community/charts
-    - ghcr.io/traefik/helm/traefik
+    - ghcr.io/traefik/helm
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
