@@ -10,8 +10,16 @@ vars:
 tasks:
   bootstrap:
     cmds:
+      - kubectl apply --server-side --context {{.kube_context}} -k argocd
+
+  uninstall:
+    cmds:
+      - kubectl delete --context {{.kube_context}} -k argocd
+
+  argocd-admin-password:
+    cmds:
       - |
-        argocd-autopilot repo bootstrap \
-          --repo $ARGOCD_BOOTSTRAP_GIT_REPO \
-          --git-token $ARGOCD_BOOTSTRAP_GIT_TOKEN \
-          --context {{.kube_context}}
+        kubectl get secret \
+          --context {{.kube_context}} \
+          --namespace argocd \
+          argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
