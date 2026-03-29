@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: traefik
   namespace: argocd
 spec:
   project: infra
   sources:
-    - repoURL: quay.io/jetstack/charts
-      chart: cert-manager
-      targetRevision: v1.20.0
+    - repoURL: ghcr.io/traefik/helm/traefik
+      chart: traefik
+      targetRevision: 39.0.5
       helm:
         version: v3
-        releaseName: cert-manager
+        releaseName: traefik
       valueFiles:
-        - $values/values/cert-manager.yml
+        - $values/values/traefik.yml
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
@@ -28,5 +28,5 @@ spec:
     - CreateNamespace=true
     - PruneLast=true
   destination:
-    namespace: cert-manager
+    namespace: traefik
     server: https://kubernetes.default.svc

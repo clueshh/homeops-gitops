@@ -5,3 +5,4 @@ resources:
   - argocd.yml
   - argocd-apps.yml
   - kube-prometheus-stack.yml
+  - traefik.yml

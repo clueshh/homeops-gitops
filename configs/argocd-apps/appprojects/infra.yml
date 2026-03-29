@@ -11,12 +11,12 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: monitoring
       server: https://kubernetes.default.svc
-    - namespace: cert-manager
+    - namespace: traefik
       server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - ghcr.io/prometheus-community/charts
-    - quay.io/jetstack/charts
+    - ghcr.io/traefik/helm/traefik
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
