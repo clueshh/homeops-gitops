@@ -3,4 +3,3 @@ kind: Kustomization
 
 resources:
   - argocd.yml
-  - argocd-apps.yml

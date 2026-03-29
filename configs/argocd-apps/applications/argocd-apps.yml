@@ -4,7 +4,7 @@ metadata:
   name: argocd-apps
   namespace: argocd
 spec:
-  project: argocd-apps
+  project: argocd
   source:
     path: configs/argocd-apps
     repoURL: https://github.com/clueshh/homeops-gitops.git

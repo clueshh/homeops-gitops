@@ -5,12 +5,12 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
-  description: This project is for the argocd chart
+  description: This project is for argocd
   destinations:
     - namespace: argocd
       server: https://kubernetes.default.svc
   sourceRepos:
-    - git@github.com:clueshh/homeops-gitops.git
+    - https://github.com/clueshh/homeops-gitops.git
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
