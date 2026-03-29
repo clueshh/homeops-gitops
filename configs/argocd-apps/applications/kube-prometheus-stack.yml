@@ -28,5 +28,5 @@ spec:
     - CreateNamespace=true
     - PruneLast=true
   destination:
-    namespace: argocd
+    namespace: kube-prometheus-stack
     server: https://kubernetes.default.svc
