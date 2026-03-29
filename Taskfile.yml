@@ -10,11 +10,19 @@ vars:
 tasks:
   bootstrap:
     cmds:
-      - kubectl apply --server-side --context {{.kube_context}} -k argocd
+      - |
+        kubectl apply \
+          --server-side \
+          --context {{.kube_context}} \
+          -k configs/argocd
+      - |
+        kubectl apply \
+          --context {{.kube_context}} \
+          -k configs/argocd-apps
 
   uninstall:
     cmds:
-      - kubectl delete --context {{.kube_context}} -k argocd
+      - kubectl delete --context {{.kube_context}} -k configs/argocd
 
   argocd-admin-password:
     cmds:

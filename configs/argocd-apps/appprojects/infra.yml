@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  description: A project for infra things
+  destinations:
+    - namespace: kube-prometheus-stack
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/clueshh/homeops-gitops.git
+    - ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
