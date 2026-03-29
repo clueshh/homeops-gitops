@@ -12,8 +12,8 @@ spec:
       helm:
         version: v3
         releaseName: kube-prometheus-stack
-      valueFiles:
-        - $values/values/kube-prometheus-stack.yml
+        valueFiles:
+          - $values/values/kube-prometheus-stack.yml
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
