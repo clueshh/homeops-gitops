@@ -1,0 +1,34 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: traefik-gateway
+spec:
+  gatewayClassName: traefik
+  listeners:
+    - name: websecure
+      port: 8443
+      protocol: HTTPS
+      hostname: traefik.whitworth.nz
+      tls:
+        certificateRefs:
+          - name: whitworth-tls
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: traefik-route
+spec:
+  parentRefs:
+    - name: traefik-gateway
+  hostnames:
+    - traefik.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /
+      backendRefs:
+        - name: traefik
+          port: 80
+          weight: 1

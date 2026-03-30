@@ -2,7 +2,7 @@
 
 ingressRoute:
   dashboard:
-    enabled: true
+    enabled: false
     matchRule: Host(`traefik.whitworth.nz`)
     entryPoints:
       - web
