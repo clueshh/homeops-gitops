@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whoami
+  namespace: traefik
+spec:
+  secretName: whitworth-tls
+  dnsNames:
+    - traefik.whitworth.nz
+  issuerRef:
+    name: acme
+    kind: Issuer
