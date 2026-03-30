@@ -15,11 +15,14 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: metallb-system
       server: https://kubernetes.default.svc
+    - namespace: cert-manager
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
+    - https://github.com/metallb/metallb
     - ghcr.io/prometheus-community/charts
     - ghcr.io/traefik/helm
-    - https://github.com/metallb/metallb
+    - quay.io/jetstack/charts
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'

@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - argocd.yml
   - argocd-apps.yml
+  - cert-manager.yml
   - kube-prometheus-stack.yml
   - traefik.yml
   - metallb.yml
