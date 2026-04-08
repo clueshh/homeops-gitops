@@ -5,6 +5,7 @@ resources:
   - argocd.yml
   - argocd-apps.yml
   - cert-manager.yml
+  - external-dns.yml
   - kube-prometheus-stack.yml
   - traefik.yml
   - metallb.yml
