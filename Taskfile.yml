@@ -1,6 +1,9 @@
 ---
 version: "3"
 
+dotenv:
+  - .env
+
 vars:
   KUBE_CONTEXT: kind-homeops
   KIND_CLUSTER_NAME: homeops
@@ -21,6 +24,20 @@ tasks:
     desc: Delete kind cluster
     cmds:
       - kind delete cluster --name {{.KIND_CLUSTER_NAME}}
+
+  certmanager:bootstrap:
+    desc: Bootstrap the Cloudflare API token secret for cert-manager
+    cmds:
+      - |
+        kubectl create secret generic \
+          cloudflare-api-token-secret \
+          --context {{.KUBE_CONTEXT}} \
+          --namespace traefik \
+          --from-literal=api-token="${CLOUDFLARE_API_TOKEN}" \
+          --dry-run=client -o yaml \
+        | kubectl apply \
+          --context {{.KUBE_CONTEXT}} \
+          -f -
 
   argocd:bootstrap:
     desc: Bootstrap ArgoCD and the argocd-apps project
@@ -48,3 +65,4 @@ tasks:
           --context {{.KUBE_CONTEXT}} \
           --namespace argocd \
           argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+        echo
