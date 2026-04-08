@@ -10,6 +10,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: traefik-gateway
+  # Uncomment to use a CNAME record instead of an A record using the MetalLB IP address.
   # annotations:
   #   external-dns.alpha.kubernetes.io/target: "lab.whitworth.nz"
 spec:
