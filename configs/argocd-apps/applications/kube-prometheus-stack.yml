@@ -17,6 +17,12 @@ spec:
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
+  ignoreDifferences:
+    # ignore the generated secret as it contains a random password
+    - group: ''
+      kind: Secret
+      name: kube-prometheus-stack-grafana
+      namespace: monitoring
   syncPolicy:
     automated:
       allowEmpty: true
