@@ -19,10 +19,19 @@ spec:
       ref: values
   ignoreDifferences:
     # ignore the generated secret as it contains a random password
-    - group: ''
+    - group: ""
       kind: Secret
       name: kube-prometheus-stack-grafana
       namespace: monitoring
+      jsonPointers:
+        - /data/admin-password
+    # ignore the secret checksum as it changes on every sync
+    - group: apps
+      kind: Deployment
+      name: kube-prometheus-stack-grafana
+      namespace: monitoring
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
   syncPolicy:
     automated:
       allowEmpty: true
