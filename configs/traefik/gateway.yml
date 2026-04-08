@@ -33,9 +33,9 @@ spec:
   rules:
     - matches:
         - path:
-            type: Exact
+            type: PathPrefix
             value: /
       backendRefs:
         - name: traefik
-          port: 80
+          port: 443
           weight: 1
