@@ -5,7 +5,6 @@ metadata:
 spec:
   secretName: traefik-tls
   dnsNames:
-    - traefik.whitworth.nz
     - '*.lab.whitworth.nz'
   issuerRef:
     name: acme
