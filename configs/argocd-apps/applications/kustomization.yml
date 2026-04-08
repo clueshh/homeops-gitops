@@ -10,5 +10,6 @@ resources:
   - jellyfin.yml
   - kube-prometheus-stack.yml
   - reloader.yml
+  - tailscale.yml
   - traefik.yml
   - metallb.yml
