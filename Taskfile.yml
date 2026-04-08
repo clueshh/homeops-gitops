@@ -72,3 +72,13 @@ tasks:
           --namespace argocd \
           argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
         echo
+
+  grafana:admin-password:
+    desc: Get the initial admin password for Grafana
+    cmds:
+      - |
+        kubectl get secret \
+          --context {{.KUBE_CONTEXT}} \
+          --namespace monitoring \
+          kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+        echo
