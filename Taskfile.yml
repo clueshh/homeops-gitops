@@ -31,10 +31,6 @@ tasks:
     cmds:
       - task: bootstrap:external-secrets
       - task: bootstrap:argocd
-      - cmd: "echo -n 'ArgoCD admin password: '"
-        silent: true
-      - task: argocd:admin-password
-        silent: true
 
   bootstrap:external-secrets:
     desc: Bootstrap External Secrets and the 1Password SecretStore
