@@ -23,5 +23,5 @@ extraManifests:
             - group: ''
               kind: Service
               name: kube-prometheus-stack-grafana
-              port: 9093
+              port: 80
               weight: 1
