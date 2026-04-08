@@ -10,8 +10,6 @@ persistence:
 
 httpRoute:
   enabled: true
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyfin.lab.whitworth.nz
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
