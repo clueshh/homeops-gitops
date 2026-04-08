@@ -1,0 +1,30 @@
+persistence:
+  config:
+    enabled: true
+    size: 5Gi
+    storageClass: ''
+  media:
+    enabled: true
+    size: 100Gi
+    storageClass: ''
+
+httpRoute:
+  enabled: true
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.lab.whitworth.nz
+    external-dns.alpha.kubernetes.io/target: lab.whitworth.nz
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - jellyfin.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+
+metrics:
+  enabled: true

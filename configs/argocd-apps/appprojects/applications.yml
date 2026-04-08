@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: applications
+  namespace: argocd
+spec:
+  description: A project for applications
+  destinations:
+    - namespace: jellyfin
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://jellyfin.github.io/jellyfin-helm
+    - https://stakater.github.io/stakater-charts
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

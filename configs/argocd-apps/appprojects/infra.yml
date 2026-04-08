@@ -21,11 +21,14 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: external-secrets
       server: https://kubernetes.default.svc
+    - namespace: reloader
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - https://github.com/metallb/metallb
     - https://kubernetes-sigs.github.io/external-dns
     - https://charts.external-secrets.io
+    - https://stakater.github.io/stakater-charts
     - ghcr.io/prometheus-community/charts
     - ghcr.io/traefik/helm
     - quay.io/jetstack/charts

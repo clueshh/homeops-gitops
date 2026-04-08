@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: applications
+  sources:
+    - repoURL: https://jellyfin.github.io/jellyfin-helm
+      chart: jellyfin
+      targetRevision: 3.2.0
+      helm:
+        version: v3
+        releaseName: jellyfin
+        valueFiles:
+          - $values/values/jellyfin.yml
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+  destination:
+    namespace: jellyfin
+    server: https://kubernetes.default.svc
