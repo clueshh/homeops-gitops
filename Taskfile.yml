@@ -25,9 +25,23 @@ tasks:
     cmds:
       - kind delete cluster --name {{.KIND_CLUSTER_NAME}}
 
-  external-secrets:bootstrap:
+  bootstrap:
+    desc: Bootstrap the cluster with all resources
+    silent: true
+    cmds:
+      - task: bootstrap:external-secrets
+      - task: bootstrap:argocd
+      - cmd: "echo -n 'ArgoCD admin password: '"
+        silent: true
+      - task: argocd:admin-password
+        silent: true
+
+  bootstrap:external-secrets:
     desc: Bootstrap External Secrets and the 1Password SecretStore
     cmds:
+      - |
+        kubectl create namespace external-secrets \
+          --context {{.KUBE_CONTEXT}}
       - |
         kubectl create secret generic \
           onepassword-token \
@@ -35,7 +49,7 @@ tasks:
           --namespace external-secrets \
           --from-literal=token="${OP_CONNECT_TOKEN}"
 
-  argocd:bootstrap:
+  bootstrap:argocd:
     desc: Bootstrap ArgoCD and the argocd-apps project
     cmds:
       - |
