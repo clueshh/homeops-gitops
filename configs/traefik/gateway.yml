@@ -11,7 +11,7 @@ kind: Gateway
 metadata:
   name: traefik-gateway
   annotations:
-    external-dns.alpha.kubernetes.io/target: "*.lab.whitworth.nz"
+    external-dns.alpha.kubernetes.io/target: "lab.whitworth.nz"
 spec:
   gatewayClassName: traefik
   listeners:
