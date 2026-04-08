@@ -3,6 +3,3 @@ kind: Kustomization
 
 resources:
   - external-secret.yml
-  - gateway.yml
-  - issuer.yml
-  - certificate.yml

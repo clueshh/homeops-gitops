@@ -25,25 +25,15 @@ tasks:
     cmds:
       - kind delete cluster --name {{.KIND_CLUSTER_NAME}}
 
-  certmanager:bootstrap:
-    desc: Bootstrap the Cloudflare API token secret for cert-manager
+  external-secrets:bootstrap:
+    desc: Bootstrap External Secrets and the 1Password SecretStore
     cmds:
       - |
         kubectl create secret generic \
-          cloudflare-api-token-secret \
+          onepassword-token \
           --context {{.KUBE_CONTEXT}} \
-          --namespace traefik \
-          --from-literal=api-token="${CERT_MANAGER_CF_API_TOKEN}"
-
-  external-dns:bootstrap:
-    desc: Bootstrap the Cloudflare API token secret for external-dns
-    cmds:
-      - |
-        kubectl create secret generic \
-          cloudflare-api-key \
-          --context {{.KUBE_CONTEXT}} \
-          --namespace external-dns \
-          --from-literal=api-token="${EXTERNAL_DNS_CF_API_TOKEN}"
+          --namespace external-secrets \
+          --from-literal=token="${OP_CONNECT_TOKEN}"
 
   argocd:bootstrap:
     desc: Bootstrap ArgoCD and the argocd-apps project

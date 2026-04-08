@@ -19,10 +19,13 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: external-dns
       server: https://kubernetes.default.svc
+    - namespace: external-secrets
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - https://github.com/metallb/metallb
     - https://kubernetes-sigs.github.io/external-dns
+    - https://charts.external-secrets.io
     - ghcr.io/prometheus-community/charts
     - ghcr.io/traefik/helm
     - quay.io/jetstack/charts
