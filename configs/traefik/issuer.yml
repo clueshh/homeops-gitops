@@ -4,9 +4,9 @@ metadata:
   name: acme
 spec:
   acme:
-    # Production server is on https://acme-v02.api.letsencrypt.org/directory
-    # Use staging by default.
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    # Use the staging server for testing to avoid hitting Let's Encrypt rate limits.
+    # server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: acme
     solvers:

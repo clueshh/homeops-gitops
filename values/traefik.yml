@@ -6,6 +6,7 @@ ports:
   # Defines the HTTP entry point named 'web'
   web:
     port: 80
+    nodePort: null
     # Instructs this entry point to redirect all traffic to the 'websecure' entry point
     http:
       redirections:
@@ -18,7 +19,7 @@ ports:
   websecure:
     asDefault: true
     port: 443
-    nodePort: 30001
+    nodePort: null
 
 ingressRoute:
   dashboard:
