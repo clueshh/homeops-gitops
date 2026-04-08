@@ -12,7 +12,6 @@ httpRoute:
   enabled: true
   annotations:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.lab.whitworth.nz
-    external-dns.alpha.kubernetes.io/target: lab.whitworth.nz
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
