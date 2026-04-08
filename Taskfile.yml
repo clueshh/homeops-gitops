@@ -33,11 +33,17 @@ tasks:
           cloudflare-api-token-secret \
           --context {{.KUBE_CONTEXT}} \
           --namespace traefik \
-          --from-literal=api-token="${CLOUDFLARE_API_TOKEN}" \
-          --dry-run=client -o yaml \
-        | kubectl apply \
+          --from-literal=api-token="${CERT_MANAGER_CF_API_TOKEN}"
+
+  external-dns:bootstrap:
+    desc: Bootstrap the Cloudflare API token secret for external-dns
+    cmds:
+      - |
+        kubectl create secret generic \
+          cloudflare-api-key \
           --context {{.KUBE_CONTEXT}} \
-          -f -
+          --namespace external-dns \
+          --from-literal=api-token="${EXTERNAL_DNS_CF_API_TOKEN}"
 
   argocd:bootstrap:
     desc: Bootstrap ArgoCD and the argocd-apps project

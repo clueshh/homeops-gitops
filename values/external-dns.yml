@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.21.0/charts/external-dns/values.schema.json
+provider:
+  name: cloudflare
+
+sources:
+  - gateway-httproute
+
+policy: sync
+registry: txt
+txtOwnerId: homeops
+domainFilters:
+  - lab.whitworth.nz
+
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: api-token
