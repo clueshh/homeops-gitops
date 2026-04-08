@@ -54,16 +54,3 @@ logs:
 metrics:
   prometheus:
     enabled: true
-
-# additionalArguments:
-#   - "--certificatesresolvers.le.acme.email=campbell@whitworth.nz"
-#   - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-#   - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
-#   # - "--certificatesresolvers.le.acme.dnschallenge.provider=your-dns-provider" # Requires provider-specific config, adjust if you control your DNS provider
-
-# Enable persistence for ACME data (certificates, account) to ensure it survives pod restarts:
-persistence:
-  enabled: false
-  name: data
-  size: 1Gi
-  storageClass: ""
