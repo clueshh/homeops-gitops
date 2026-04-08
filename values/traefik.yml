@@ -38,23 +38,6 @@ providers:
 
 gateway:
   enabled: false
-  listeners:
-    web:           # HTTP listener that matches entryPoint `web`
-      port: 80
-      protocol: HTTP
-      namespacePolicy:
-        from: All
-
-    websecure:         # HTTPS listener that matches entryPoint `websecure`
-      port: 443
-      protocol: HTTPS  # TLS terminates inside Traefik
-      namespacePolicy:
-        from: All
-      mode: Terminate
-      certificateRefs:
-        - kind: Secret
-          name: local-selfsigned-tls  # the Secret we created before the installation
-          group: ""
 
 gatewayClass:
   enabled: false
