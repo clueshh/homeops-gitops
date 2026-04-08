@@ -19,7 +19,7 @@ spec:
       hostname: traefik.whitworth.nz
       tls:
         certificateRefs:
-          - name: whitworth-tls
+          - name: traefik-tls
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
