@@ -79,7 +79,7 @@ metrics:
 
 # Enable persistence for ACME data (certificates, account) to ensure it survives pod restarts:
 persistence:
-  enabled: true
+  enabled: false
   name: data
   size: 1Gi
   storageClass: ""
