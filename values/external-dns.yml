@@ -11,7 +11,7 @@ policy: sync
 registry: txt
 txtOwnerId: homeops
 domainFilters:
-  - lab.whitworth.nz
+  - whitworth.nz
 
 env:
   - name: CF_API_TOKEN
