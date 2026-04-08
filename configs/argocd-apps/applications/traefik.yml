@@ -17,9 +17,9 @@ spec:
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
-    - repoURL: https://github.com/clueshh/homeops-gitops.git
-      path: configs/traefik
-      targetRevision: HEAD
+    # - repoURL: https://github.com/clueshh/homeops-gitops.git
+    #   path: configs/traefik
+    #   targetRevision: HEAD
   syncPolicy:
     automated:
       allowEmpty: true
