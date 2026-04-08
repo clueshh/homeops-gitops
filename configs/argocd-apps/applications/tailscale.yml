@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tailscale
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: infra
+  sources:
+    - repoURL: https://pkgs.tailscale.com/helmcharts
+      chart: tailscale-operator
+      targetRevision: 1.94.1
+      helm:
+        version: v3
+        releaseName: tailscale-operator
+        valueFiles:
+          - $values/values/tailscale.yml
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      path: configs/tailscale
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+  destination:
+    namespace: tailscale
+    server: https://kubernetes.default.svc

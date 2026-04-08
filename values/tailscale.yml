@@ -1,0 +1,5 @@
+apiServerProxyConfig:
+  mode: "true"
+
+ingressClass:
+  enabled: false
