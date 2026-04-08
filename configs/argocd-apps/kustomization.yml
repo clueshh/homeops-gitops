@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - appprojects
   - applications
+  - route.yml
