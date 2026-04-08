@@ -2,6 +2,8 @@
 provider:
   name: cloudflare
 
+logLevel: debug
+
 sources:
   - gateway-httproute
 
