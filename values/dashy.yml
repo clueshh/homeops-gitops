@@ -121,6 +121,16 @@ configMap:
         - name: System
           icon: fas fa-desktop
           items:
+            - title: ArgoCD
+              icon: hl-argocd
+              url: https://argocd.lab.whitworth.nz
+              description: GitOps CD
+              tags: [self-hosted, devops, server]
+            - title: Grafana
+              icon: hl-grafana
+              url: https://grafana.lab.whitworth.nz
+              description: Metrics & monitoring
+              tags: [self-hosted, observability, server]
             - title: Tailscale
               icon: hl-tailscale
               url: https://login.tailscale.com/admin/machines
