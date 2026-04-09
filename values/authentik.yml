@@ -56,6 +56,7 @@ additionalObjects:
       target:
         creationPolicy: Owner
         template:
+          engineVersion: v2
           data:
             AUTHENTIK_SECRET_KEY: "{{ .secretKey }}"
             AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
@@ -81,6 +82,7 @@ additionalObjects:
       target:
         creationPolicy: Owner
         template:
+          engineVersion: v2
           data:
             username: authentik
             password: "{{ .password }}"
