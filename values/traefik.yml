@@ -10,6 +10,7 @@ ports:
   # The port on which Traefik itself will be available. This is used for the dashboard and API.
   traefik:
     port: 8080
+    exposedPort: 8080
     expose:
       default: true
 
