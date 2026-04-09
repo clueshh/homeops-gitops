@@ -3,6 +3,8 @@ deployment:
   image:
     repository: ghcr.io/lissy93/dashy
     tag: 3.2.10
+  containerSecurityContext:
+    runAsNonRoot: false
   ports:
     - containerPort: 8080
       name: http
