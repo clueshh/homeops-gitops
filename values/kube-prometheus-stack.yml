@@ -1,3 +1,40 @@
+grafana:
+  sidecar:
+    dashboards:
+      enabled: true
+      searchNamespace: ALL
+    datasources:
+      enabled: true
+      defaultDatasourceEnabled: false
+  # http://docs.grafana.org/installation/configuration/
+  grafana.ini:
+    server:
+      domain: "grafana.lab.whitworth.nz"
+      root_url: "https://grafana.lab.whitworth.nz"
+    auth:
+        signout_redirect_url: "https://auth.lab.whitworth.nz/application/o/grafana/end-session/"
+        oauth_auto_login: true
+    auth.generic_oauth:
+        name: authentik
+        enabled: true
+        client_id: "$__env{GF_AUTH_GENERIC_OAUTH_CLIENT_ID}"
+        client_secret: "$__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}"
+        scopes: "openid profile email"
+        auth_url: "https://auth.lab.whitworth.nz/application/o/authorize/"
+        token_url: "https://auth.lab.whitworth.nz/application/o/token/"
+        api_url: "https://auth.lab.whitworth.nz/application/o/userinfo/"
+        # Optionally map user groups to Grafana roles
+        # role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+  envValueFrom:
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID:
+      secretKeyRef:
+        name: grafana-oauth-credentials
+        key: clientId
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
+      secretKeyRef:
+        name: grafana-oauth-credentials
+        key: clientSecret
+
 extraManifests:
   - apiVersion: gateway.networking.k8s.io/v1
     kind: HTTPRoute
@@ -68,3 +105,20 @@ extraManifests:
               name: kube-prometheus-stack-alertmanager
               port: 9093
               weight: 1
+  - apiVersion: external-secrets.io/v1
+    kind: ExternalSecret
+    metadata:
+      name: grafana-oauth-credentials
+    spec:
+      secretStoreRef:
+        name: 1password
+        kind: ClusterSecretStore
+      target:
+        creationPolicy: Owner
+      data:
+        - secretKey: clientId
+          remoteRef:
+            key: Authentik Grafana Provider/clientId
+        - secretKey: clientSecret
+          remoteRef:
+            key: Authentik Grafana Provider/clientSecret
