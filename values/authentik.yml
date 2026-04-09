@@ -58,14 +58,19 @@ additionalObjects:
       template:
         type: Opaque
         data:
+          AUTHENTIK_SECRET_KEY: "{{ .secret-key }}"
           AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
           AUTHENTIK_POSTGRESQL__PORT: "5432"
+          AUTHENTIK_POSTGRESQL__PASSWORD: "{{ .postgres-password }}"
           AUTHENTIK_POSTGRESQL__USER: authentik
           AUTHENTIK_POSTGRESQL__NAME: authentik
       data:
-        - secretKey: AUTHENTIK_POSTGRESQL__PASSWORD
+        - secretKey: postgres-password
           remoteRef:
             key: Authentik PostgreSQL/password
+        - secretKey: secret-key
+          remoteRef:
+            key: Authentik Secret Key/password
   - apiVersion: external-secrets.io/v1
     kind: ExternalSecret
     metadata:
