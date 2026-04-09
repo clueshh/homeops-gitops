@@ -68,12 +68,12 @@ additionalObjects:
             # https://docs.goauthentik.io/install-config/email/
             # https://www.reddit.com/r/selfhosted/comments/10c6w7j/notes_about_email_setup_with_authentik/
             AUTHENTIK_EMAIL__HOST: smtp.gmail.com
-            AUTHENTIK_EMAIL__PORT: 587
+            AUTHENTIK_EMAIL__PORT: "587"
             AUTHENTIK_EMAIL__USERNAME: campbell@whitworth.nz
             AUTHENTIK_EMAIL__PASSWORD: "{{ `{{ .emailPassword }}` }}"
-            AUTHENTIK_EMAIL__USE_TLS: true
-            AUTHENTIK_EMAIL__USE_SSL: false
-            AUTHENTIK_EMAIL__TIMEOUT: 10
+            AUTHENTIK_EMAIL__USE_TLS: "true"
+            AUTHENTIK_EMAIL__USE_SSL: "false"
+            AUTHENTIK_EMAIL__TIMEOUT: "10"
             AUTHENTIK_EMAIL__FROM=: authentik@whitworth.nz
       data:
         - secretKey: postgresPassword
