@@ -6,3 +6,4 @@ resources:
   - gateway.yml
   - issuer.yml
   - certificate.yml
+  - route.yml
