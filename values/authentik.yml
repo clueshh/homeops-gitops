@@ -29,7 +29,7 @@ server:
     main:
       enabled: true
       hostnames:
-        - authentik.lab.whitworth.nz
+        - auth.lab.whitworth.nz
       parentRefs:
         - group: gateway.networking.k8s.io
           kind: Gateway

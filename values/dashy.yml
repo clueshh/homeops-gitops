@@ -138,7 +138,7 @@ configMap:
               tags: [self-hosted, devops, server]
             - title: Authentik
               icon: hl-authentik
-              url: https://authentik.lab.whitworth.nz
+              url: https://auth.lab.whitworth.nz
               description: Identity provider / SSO
               tags: [self-hosted, auth, server]
             - title: Tailscale
