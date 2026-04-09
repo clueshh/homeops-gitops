@@ -17,8 +17,8 @@ grafana:
     auth.generic_oauth:
         name: authentik
         enabled: true
-        client_id: "$__env{GF_AUTH_GENERIC_OAUTH_CLIENT_ID}"
-        client_secret: "$__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}"
+        client_id: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_ID}
+        client_secret: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
         scopes: "openid profile email"
         auth_url: "https://auth.lab.whitworth.nz/application/o/authorize/"
         token_url: "https://auth.lab.whitworth.nz/application/o/token/"
