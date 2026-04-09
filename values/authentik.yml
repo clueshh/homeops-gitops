@@ -1,0 +1,101 @@
+global:
+  addPrometheusAnnotations: true
+
+authentik:
+  existingSecret:
+    secretName: authentik-config
+  # TODO: Add email config https://docs.goauthentik.io/install-config/email/
+  # email:
+  #     # -- SMTP Server emails are sent from, fully optional
+  #     host: ""
+  #     port: 587
+  #     # -- SMTP credentials. When left empty, no authentication will be done.
+  #     username: ""
+  #     # -- SMTP credentials. When left empty, no authentication will be done.
+  #     password: ""
+  #     # -- Enable either use_tls or use_ssl. They can't be enabled at the same time.
+  #     use_tls: false
+  #     # -- Enable either use_tls or use_ssl. They can't be enabled at the same time.
+  #     use_ssl: false
+  #     # -- Connection timeout in seconds
+  #     timeout: 30
+  #     # -- Email 'from' address can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
+  #     from: ""
+
+server:
+  metrics:
+    enabled: true
+  route:
+    main:
+      enabled: true
+      hostnames:
+        - authentik.lab.whitworth.nz
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: traefik-gateway
+          namespace: traefik
+      matches:
+        - path:
+            type: PathPrefix
+            value: "{{ .Values.authentik.web.path }}"
+
+worker:
+  metrics:
+    enabled: true
+
+additionalObjects:
+  - apiVersion: external-secrets.io/v1
+    kind: ExternalSecret
+    metadata:
+      name: authentik-config
+    spec:
+      secretStoreRef:
+        kind: ClusterSecretStore
+        name: 1password
+      target:
+        creationPolicy: Owner
+      template:
+        type: Opaque
+        data:
+          AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
+          AUTHENTIK_POSTGRESQL__PORT: "5432"
+          AUTHENTIK_POSTGRESQL__USER: authentik
+          AUTHENTIK_POSTGRESQL__NAME: authentik
+      data:
+        - secretKey: AUTHENTIK_POSTGRESQL__PASSWORD
+          remoteRef:
+            key: Authentik PostgreSQL/password
+  - apiVersion: external-secrets.io/v1
+    kind: ExternalSecret
+    metadata:
+      name: authentik-db-credentials
+    spec:
+      secretStoreRef:
+        kind: ClusterSecretStore
+        name: 1password
+      target:
+        creationPolicy: Owner
+      template:
+        type: Opaque
+        data:
+          username: authentik
+      data:
+        - secretKey: password
+          remoteRef:
+            key: Authentik PostgreSQL/password
+  - apiVersion: postgresql.cnpg.io/v1
+    kind: Cluster
+    metadata:
+      name: authentik-db
+    spec:
+      instances: 2
+      bootstrap:
+        initdb:
+          database: authentik
+          owner: authentik
+          secret:
+            name: authentik-db-credentials
+      storage:
+        size: 5Gi
+        storageClass: gp2

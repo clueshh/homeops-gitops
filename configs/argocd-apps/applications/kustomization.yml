@@ -4,7 +4,9 @@ kind: Kustomization
 resources:
   - argocd.yml
   - argocd-apps.yml
+  - authentik.yml
   - cert-manager.yml
+  - cloudnative-pg.yml
   - dashy.yml
   - external-dns.yml
   - external-secrets.yml
