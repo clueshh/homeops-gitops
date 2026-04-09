@@ -58,12 +58,14 @@ additionalObjects:
         template:
           engineVersion: v2
           data:
+            # https://docs.goauthentik.io/install-config/configuration/
             AUTHENTIK_SECRET_KEY: "{{ `{{ .secretKey }}` }}"
             AUTHENTIK_POSTGRESQL__HOST: authentik-db-rw
             AUTHENTIK_POSTGRESQL__PORT: "5432"
             AUTHENTIK_POSTGRESQL__PASSWORD: "{{ `{{ .postgresPassword }}` }}"
             AUTHENTIK_POSTGRESQL__USER: authentik
             AUTHENTIK_POSTGRESQL__NAME: authentik
+            # TODO: Add email config https://docs.goauthentik.io/install-config/email/
       data:
         - secretKey: postgresPassword
           remoteRef:
