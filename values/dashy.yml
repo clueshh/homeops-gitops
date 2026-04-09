@@ -42,7 +42,7 @@ httpRoute:
 configMap:
   enabled: true
   files:
-    dashy.yml: |
+    config: |
       pageInfo:
         title: Home Lab
         description: Home Lab Dashboard
