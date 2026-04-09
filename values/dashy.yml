@@ -131,6 +131,11 @@ configMap:
               url: https://grafana.lab.whitworth.nz
               description: Metrics & monitoring
               tags: [self-hosted, observability, server]
+            - title: Traefik
+              icon: hl-traefik
+              url: https://traefik.lab.whitworth.nz
+              description: Ingress / reverse proxy
+              tags: [self-hosted, devops, server]
             - title: Tailscale
               icon: hl-tailscale
               url: https://login.tailscale.com/admin/machines
