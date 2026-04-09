@@ -45,7 +45,7 @@ configMap:
   enabled: true
   files:
     config:
-      dashy.yml: |
+      conf.yml: |
         pageInfo:
           title: Home Lab
           description: Home Lab Dashboard
