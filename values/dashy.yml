@@ -1,3 +1,5 @@
+applicationName: dashy
+
 deployment:
   enabled: true
   image:
