@@ -1,8 +1,16 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/traefik/traefik-helm-chart/refs/tags/v39.0.5/traefik/values.schema.json
 
+api:
+  dashboard: true
+  insecure: false
+
 # Configure Network Ports and EntryPoints
 # EntryPoints are the network listeners for incoming traffic.
 ports:
+  # The port on which Traefik itself will be available. This is used for the dashboard and API.
+  traefik:
+    port: 8080
+
   # Defines the HTTP entry point named 'web'
   web:
     port: 80

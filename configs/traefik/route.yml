@@ -21,4 +21,4 @@ spec:
             value: /api
       backendRefs:
         - name: traefik
-          port: 9000
+          port: 8080
