@@ -8,7 +8,7 @@ metadata:
 spec:
   project: infra
   sources:
-    - repoURL: https://stakater.github.io/stakater-charts
+    - repoURL: https://charts.goauthentik.io
       chart: authentik
       targetRevision: 2026.2.2
       helm:
