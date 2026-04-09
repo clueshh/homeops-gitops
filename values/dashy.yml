@@ -21,6 +21,18 @@ deployment:
     dashy-config:
       name: dashy-volume
       mountPath: /app/user-data
+  livenessProbe:
+    enabled: true
+    exec:
+      command: ["node", "/app/services/healthcheck"]
+  readinessProbe:
+    enabled: true
+    exec:
+      command: ["node", "/app/services/healthcheck"]
+  startupProbe:
+    enabled: true
+    exec:
+      command: ["node", "/app/services/healthcheck"]
 
 httpRoute:
   enabled: true
