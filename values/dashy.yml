@@ -39,7 +39,7 @@ httpRoute:
         - name: '{{ include "application.name" $ }}'
           port: 8080
 
-configmap:
+configMap:
   enabled: true
   files:
     dashy.yml:
