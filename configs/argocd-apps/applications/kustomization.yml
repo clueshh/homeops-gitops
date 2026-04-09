@@ -5,6 +5,7 @@ resources:
   - argocd.yml
   - argocd-apps.yml
   - cert-manager.yml
+  - dashy.yml
   - external-dns.yml
   - external-secrets.yml
   - jellyfin.yml

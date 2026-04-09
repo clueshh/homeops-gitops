@@ -9,6 +9,8 @@ spec:
   destinations:
     - namespace: jellyfin
       server: https://kubernetes.default.svc
+    - namespace: dashy
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - https://jellyfin.github.io/jellyfin-helm
