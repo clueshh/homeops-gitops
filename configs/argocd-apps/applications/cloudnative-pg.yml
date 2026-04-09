@@ -29,6 +29,7 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - PruneLast=true
+    - ServerSideApply=true
   destination:
     namespace: cnpg-system
     server: https://kubernetes.default.svc
