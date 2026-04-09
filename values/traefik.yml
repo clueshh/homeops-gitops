@@ -2,7 +2,7 @@
 
 api:
   dashboard: true
-  insecure: false
+  insecure: true
 
 # Configure Network Ports and EntryPoints
 # EntryPoints are the network listeners for incoming traffic.
