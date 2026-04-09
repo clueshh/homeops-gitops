@@ -20,9 +20,9 @@ spec:
             type: PathPrefix
             value: /api
         # Catch the root for the initial redirect
-        - path:
-            type: PathPrefix
-            value: /
+        # - path:
+        #     type: PathPrefix
+        #     value: /
       backendRefs:
         - name: traefik
           port: 8080
