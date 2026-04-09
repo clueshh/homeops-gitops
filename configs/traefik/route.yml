@@ -34,5 +34,5 @@ spec:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: traefik
+        - name: traefik-internal
           port: 8080

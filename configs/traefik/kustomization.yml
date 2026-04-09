@@ -7,3 +7,4 @@ resources:
   - issuer.yml
   - certificate.yml
   - route.yml
+  - service-internal.yml
