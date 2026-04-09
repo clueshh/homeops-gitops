@@ -74,7 +74,7 @@ additionalObjects:
             AUTHENTIK_EMAIL__USE_TLS: "true"
             AUTHENTIK_EMAIL__USE_SSL: "false"
             AUTHENTIK_EMAIL__TIMEOUT: "10"
-            AUTHENTIK_EMAIL__FROM=: authentik@whitworth.nz
+            AUTHENTIK_EMAIL__FROM: authentik@whitworth.nz
       data:
         - secretKey: postgresPassword
           remoteRef:
