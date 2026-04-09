@@ -42,105 +42,106 @@ httpRoute:
 configMap:
   enabled: true
   files:
-    config: |
-      pageInfo:
-        title: Home Lab
-        description: Home Lab Dashboard
-        navLinks:
-          - title: Home
-            path: /
+    config:
+      dashy.yml: |
+        pageInfo:
+          title: Home Lab
+          description: Home Lab Dashboard
+          navLinks:
+            - title: Home
+              path: /
 
-      appConfig:
-        theme: dashy-docs
+        appConfig:
+          theme: dashy-docs
 
-      # Main content - An array of sections, each containing an array of items
-      sections:
-      - name: Today
-        icon: far fa-smile-beam
-        displayData:
-          collapsed: false
-          hideForGuests: false
-        widgets:
-        - type: clock
-        - type: public-holidays
-          options:
-            country: NZ
-            region: AK
-            holidayType: all
-            monthsToShow: 2
-            lang: en
-
-      - name: Media
-        icon: fas fa-film
-        items:
-          - title: Jellyfin
-            icon: hl-jellyfin
-            url: https://jellyfin.pooja.whitworth.nz
-            description: Media server
-            tags: [self-hosted, media, server]
-          - title: Sonarr
-            icon: hl-sonarr
-            url: https://sonarr.pooja.whitworth.nz
-            description: TV show management
-            tags: [self-hosted, media, server]
-          - title: Radarr
-            icon: hl-radarr
-            url: https://radarr.pooja.whitworth.nz
-            description: Movie management
-            tags: [self-hosted, media, server]
-          - title: Prowlarr
-            icon: hl-prowlarr
-            url: https://prowlarr.pooja.whitworth.nz
-            description: Indexer management
-            tags: [self-hosted, media, server]
-          - title: Dispatcharr
-            icon: hl-dispatcharr
-            url: https://dispatcharr.pooja.whitworth.nz
-            description: IPTV management
-            tags: [self-hosted, media, server]
-          - title: qBittorrent
-            icon: hl-qbittorrent
-            url: https://qbittorrent.pooja.whitworth.nz
-            description: Torrent management
-            tags: [self-hosted, media, server]
-
-      - name: System
-        icon: fas fa-desktop
-        items:
-          - title: Tailscale
-            icon: hl-tailscale
-            url: https://login.tailscale.com/admin/machines
-            description: VPN
-            tags: [self-hosted, dev, server]
-          - title: Cloudflare
-            icon: hl-cloudflare
-            url: https://dash.cloudflare.com
-            description: DNS management
-            tags: [self-hosted, dev, server]
-          - title: WireGuard
-            icon: hl-wireguard
-            url: https://wg-easy.pooja.whitworth.nz
-            description: VPN management
-            tags: [self-hosted, dev, server]
-          - title: Glances
-            icon: hl-glances
-            url: https://glances.pooja.whitworth.nz
-            description: System monitoring
-            tags: [self-hosted, dev, server]
-          - title: AdGuard Home
-            icon: hl-adguardhome
-            url: https://adguard.pooja.whitworth.nz
-            description: DNS filtering
-            tags: [self-hosted, dev, server]
-
-      - name: Lol
-        icon: far fa-laugh
-        displayData:
-          collapsed: false
-          hideForGuests: false
-        widgets:
-          - type: joke
+        # Main content - An array of sections, each containing an array of items
+        sections:
+        - name: Today
+          icon: far fa-smile-beam
+          displayData:
+            collapsed: false
+            hideForGuests: false
+          widgets:
+          - type: clock
+          - type: public-holidays
             options:
-              safeMode: true
-              language: en
-              category: pun
+              country: NZ
+              region: AK
+              holidayType: all
+              monthsToShow: 2
+              lang: en
+
+        - name: Media
+          icon: fas fa-film
+          items:
+            - title: Jellyfin
+              icon: hl-jellyfin
+              url: https://jellyfin.pooja.whitworth.nz
+              description: Media server
+              tags: [self-hosted, media, server]
+            - title: Sonarr
+              icon: hl-sonarr
+              url: https://sonarr.pooja.whitworth.nz
+              description: TV show management
+              tags: [self-hosted, media, server]
+            - title: Radarr
+              icon: hl-radarr
+              url: https://radarr.pooja.whitworth.nz
+              description: Movie management
+              tags: [self-hosted, media, server]
+            - title: Prowlarr
+              icon: hl-prowlarr
+              url: https://prowlarr.pooja.whitworth.nz
+              description: Indexer management
+              tags: [self-hosted, media, server]
+            - title: Dispatcharr
+              icon: hl-dispatcharr
+              url: https://dispatcharr.pooja.whitworth.nz
+              description: IPTV management
+              tags: [self-hosted, media, server]
+            - title: qBittorrent
+              icon: hl-qbittorrent
+              url: https://qbittorrent.pooja.whitworth.nz
+              description: Torrent management
+              tags: [self-hosted, media, server]
+
+        - name: System
+          icon: fas fa-desktop
+          items:
+            - title: Tailscale
+              icon: hl-tailscale
+              url: https://login.tailscale.com/admin/machines
+              description: VPN
+              tags: [self-hosted, dev, server]
+            - title: Cloudflare
+              icon: hl-cloudflare
+              url: https://dash.cloudflare.com
+              description: DNS management
+              tags: [self-hosted, dev, server]
+            - title: WireGuard
+              icon: hl-wireguard
+              url: https://wg-easy.pooja.whitworth.nz
+              description: VPN management
+              tags: [self-hosted, dev, server]
+            - title: Glances
+              icon: hl-glances
+              url: https://glances.pooja.whitworth.nz
+              description: System monitoring
+              tags: [self-hosted, dev, server]
+            - title: AdGuard Home
+              icon: hl-adguardhome
+              url: https://adguard.pooja.whitworth.nz
+              description: DNS filtering
+              tags: [self-hosted, dev, server]
+
+        - name: Lol
+          icon: far fa-laugh
+          displayData:
+            collapsed: false
+            hideForGuests: false
+          widgets:
+            - type: joke
+              options:
+                safeMode: true
+                language: en
+                category: pun
