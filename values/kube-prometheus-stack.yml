@@ -118,7 +118,13 @@ extraManifests:
       data:
         - secretKey: clientId
           remoteRef:
+            conversionStrategy: Default
+            decodingStrategy: None
             key: Authentik Grafana Provider/clientId
+            metadataPolicy: None
         - secretKey: clientSecret
           remoteRef:
+            conversionStrategy: Default
+            decodingStrategy: None
             key: Authentik Grafana Provider/clientSecret
+            metadataPolicy: None
