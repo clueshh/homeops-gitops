@@ -1,6 +1,9 @@
 global:
   addPrometheusAnnotations: true
 
+  deploymentAnnotations:
+    reloader.stakater.com/auto: "true"
+
 authentik:
   existingSecret:
     secretName: authentik-config
