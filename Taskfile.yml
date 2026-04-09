@@ -58,6 +58,11 @@ tasks:
           --context {{.KUBE_CONTEXT}} \
           -k configs/argocd-apps
 
+  tailscale:configure:kubeconfig:
+    desc: Configure kubectl to use Tailscale for cluster access
+    cmds:
+      - tailscale configure kubeconfig tailscale-operator
+
   argocd:uninstall:
     desc: Uninstall ArgoCD and the argocd-apps project
     cmds:
