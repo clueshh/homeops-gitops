@@ -98,4 +98,3 @@ additionalObjects:
             name: authentik-db-credentials
       storage:
         size: 5Gi
-        storageClass: gp2
