@@ -58,10 +58,10 @@ additionalObjects:
         template:
           engineVersion: v2
           data:
-            AUTHENTIK_SECRET_KEY: "{{ .secretKey }}"
+            AUTHENTIK_SECRET_KEY: "{{ `{{ .secretKey }}` }}"
             AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
             AUTHENTIK_POSTGRESQL__PORT: "5432"
-            AUTHENTIK_POSTGRESQL__PASSWORD: "{{ .postgresPassword }}"
+            AUTHENTIK_POSTGRESQL__PASSWORD: "{{ `{{ .postgresPassword }}` }}"
             AUTHENTIK_POSTGRESQL__USER: authentik
             AUTHENTIK_POSTGRESQL__NAME: authentik
       data:
@@ -85,7 +85,7 @@ additionalObjects:
           engineVersion: v2
           data:
             username: authentik
-            password: "{{ .password }}"
+            password: "{{ `{{ .password }}` }}"
       data:
         - secretKey: password
           remoteRef:
