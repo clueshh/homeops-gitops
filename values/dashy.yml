@@ -3,6 +3,10 @@ deployment:
   image:
     repository: ghcr.io/lissy93/dashy
     tag: 3.2.10
+  ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
   env:
    NODE_ENV:
       value: "production"
