@@ -11,7 +11,7 @@ ports:
   traefik:
     port: 8080
     expose:
-      default: false
+      default: true
 
   # Defines the HTTP entry point named 'web'
   web:
