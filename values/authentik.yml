@@ -55,15 +55,14 @@ additionalObjects:
         name: 1password
       target:
         creationPolicy: Owner
-      template:
-        type: Opaque
-        data:
-          AUTHENTIK_SECRET_KEY: "{{ .secretKey }}"
-          AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
-          AUTHENTIK_POSTGRESQL__PORT: "5432"
-          AUTHENTIK_POSTGRESQL__PASSWORD: "{{ .postgresPassword }}"
-          AUTHENTIK_POSTGRESQL__USER: authentik
-          AUTHENTIK_POSTGRESQL__NAME: authentik
+        template:
+          data:
+            AUTHENTIK_SECRET_KEY: "{{ .secretKey }}"
+            AUTHENTIK_POSTGRESQL__HOST: authentik-db-postgresql
+            AUTHENTIK_POSTGRESQL__PORT: "5432"
+            AUTHENTIK_POSTGRESQL__PASSWORD: "{{ .postgresPassword }}"
+            AUTHENTIK_POSTGRESQL__USER: authentik
+            AUTHENTIK_POSTGRESQL__NAME: authentik
       data:
         - secretKey: postgresPassword
           remoteRef:
@@ -81,10 +80,10 @@ additionalObjects:
         name: 1password
       target:
         creationPolicy: Owner
-      template:
-        type: Opaque
-        data:
-          username: authentik
+        template:
+          data:
+            username: authentik
+            password: "{{ .password }}"
       data:
         - secretKey: password
           remoteRef:
