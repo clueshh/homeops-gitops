@@ -30,6 +30,14 @@ httpRoute:
   gatewayNamespace: traefik
   hostnames:
     - home.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 8080
 
 configmap:
   enabled: true
