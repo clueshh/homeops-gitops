@@ -21,7 +21,6 @@ deployment:
     dashy-config:
       name: dashy-volume
       mountPath: /app/user-data
-      subPath: dashy.yml
 
 httpRoute:
   enabled: true
