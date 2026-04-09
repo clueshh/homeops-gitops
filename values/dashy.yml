@@ -132,10 +132,15 @@ configMap:
               description: Metrics & monitoring
               tags: [self-hosted, observability, server]
             - title: Traefik
-              icon: hl-traefik
+              icon: hl-traefik-proxy
               url: https://traefik.lab.whitworth.nz
               description: Ingress / reverse proxy
               tags: [self-hosted, devops, server]
+            - title: Authentik
+              icon: hl-authentik
+              url: https://authentik.lab.whitworth.nz
+              description: Identity provider / SSO
+              tags: [self-hosted, auth, server]
             - title: Tailscale
               icon: hl-tailscale
               url: https://login.tailscale.com/admin/machines
