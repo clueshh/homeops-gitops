@@ -1,7 +1,7 @@
 deployment:
   enabled: true
   image:
-    repository: docker.io/lissy93/dashy
+    repository: ghcr.io/lissy93/dashy
     tag: 3.2.10
   env:
    NODE_ENV:
