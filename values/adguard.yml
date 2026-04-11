@@ -11,14 +11,12 @@ deployment:
     runAsNonRoot: false
   ports:
     # DNS
-    - port: 53
+    - containerPort: 53
       name: dns-udp
       protocol: UDP
-      targetPort: 53
-    - port: 53
+    - containerPort: 53
       name: dns-tcp
       protocol: TCP
-      targetPort: 53
     # main web interface
     - containerPort: 80
       name: http
