@@ -10,7 +10,12 @@ deployment:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
   ports:
+    # main web interface
     - containerPort: 80
+      name: http
+      protocol: TCP
+    # initial setup web interface
+    - containerPort: 3000
       name: http
       protocol: TCP
 
