@@ -1,0 +1,31 @@
+# https://github.com/AdguardTeam/Adguardhome/wiki/Configuration#configuration-file
+applicationName: adguard
+
+deployment:
+  enabled: true
+  image:
+    repository: adguard/adguardhome
+    tag: v0.107.73
+  ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  gatewayNamespace: traefik
+  hostnames:
+    - adguard.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 80
