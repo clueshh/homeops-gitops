@@ -19,6 +19,18 @@ deployment:
       name: setup-http
       protocol: TCP
 
+service:
+  enabled: true
+  ports:
+    - port: 80
+      name: http
+      protocol: TCP
+      targetPort: 80
+    - port: 3000
+      name: setup-http
+      protocol: TCP
+      targetPort: 3000
+
 httpRoute:
   enabled: true
   parentRefs:
