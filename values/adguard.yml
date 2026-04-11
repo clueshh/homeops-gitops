@@ -69,7 +69,7 @@ extraObjects:
   - apiVersion: v1
     kind: Service
     metadata:
-      name: '{{ include "application.name" $ }}'
+      name: adguard-dns
       annotations:
         metallb.universe.tf/address-pool: adguard-static
     selector:
