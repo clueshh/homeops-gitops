@@ -2,4 +2,5 @@ apiServerProxyConfig:
   mode: "true"
 
 ingressClass:
-  enabled: false
+  # enables the "tailscale" IngressClass
+  enabled: true
