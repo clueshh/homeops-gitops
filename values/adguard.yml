@@ -7,6 +7,7 @@ deployment:
     repository: adguard/adguardhome
     tag: v0.107.73
   containerSecurityContext:
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
   ports:
     - containerPort: 80
