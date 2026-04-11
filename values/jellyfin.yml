@@ -12,7 +12,7 @@ metrics:
   enabled: true
 
 # AWX - HTTPS access via Tailscale Ingress
-# Access at: https://jellyfin.<tailnet>.ts.net
+# Access at: https://jellyfin.tail72123.ts.net
 ingress:
   enabled: true
   className: tailscale
