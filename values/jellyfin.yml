@@ -8,6 +8,28 @@ persistence:
     size: 100Gi
     storageClass: ''
 
+metrics:
+  enabled: true
+
+# AWX - HTTPS access via Tailscale Ingress
+# Access at: https://jellyfin.<tailnet>.ts.net
+ingress:
+  enabled: true
+  className: tailscale
+  tls:
+   - hosts:
+       - jellyfin
+  hosts:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin
+                port:
+                  number: 8096
+
 httpRoute:
   enabled: true
   parentRefs:
@@ -22,6 +44,3 @@ httpRoute:
         - path:
             type: PathPrefix
             value: /
-
-metrics:
-  enabled: true
