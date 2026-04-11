@@ -68,25 +68,3 @@ httpRoute:
       backendRefs:
         - name: '{{ include "application.name" $ }}'
           port: 80
-
-extraObjects:
-  - apiVersion: gateway.networking.k8s.io/v1
-    kind: HTTPRoute
-    metadata:
-      name: adguard-setup-route
-    spec:
-      parentRefs:
-        - group: gateway.networking.k8s.io
-          kind: Gateway
-          name: traefik-gateway
-          namespace: traefik
-      hostnames:
-        - setup.adguard.lab.whitworth.nz
-      rules:
-        - matches:
-            - path:
-                type: PathPrefix
-                value: /
-          backendRefs:
-            - name: '{{ include "application.name" $ }}'
-              port: 3000
