@@ -25,6 +25,14 @@ deployment:
     - containerPort: 3000
       name: setup-http
       protocol: TCP
+  # TODO: Add persistence so configuration is retained across pod restarts.
+  volumes:
+    # adguard-config:
+    #   persistentVolumeClaim:
+    #     claimName: adguard-pvc
+  volumeMounts:
+    # adguard-config:
+    #    mountPath: /opt/adguardhome/conf
 
 service:
   enabled: true
