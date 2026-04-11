@@ -68,9 +68,10 @@ httpRoute:
 extraObjects:
   - apiVersion: v1
     kind: Service
-    name: adguard-dns
-    annotations:
-      metallb.universe.tf/address-pool: adguard-static
+    metadata:
+      name: '{{ include "application.name" $ }}'
+      annotations:
+        metallb.universe.tf/address-pool: adguard-static
     selector:
       app.kubernetes.io/name: '{{ include "application.name" $ }}'
     spec:
