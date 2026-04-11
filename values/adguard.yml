@@ -28,19 +28,15 @@ deployment:
 
 service:
   enabled: true
-  type: LoadBalancer
-  loadBalancerIP: 172.19.1.53
-  annotations:
-    metallb.universe.tf/address-pool: adguard-static
   ports:
-    - port: 53
-      name: dns-udp
-      protocol: UDP
-      targetPort: 53
-    - port: 53
-      name: dns-tcp
+    - port: 80
+      name: http
       protocol: TCP
-      targetPort: 53
+      targetPort: 80
+    - port: 3000
+      name: setup-http
+      protocol: TCP
+      targetPort: 3000
 
 httpRoute:
   enabled: true
@@ -60,3 +56,24 @@ httpRoute:
       backendRefs:
         - name: '{{ include "application.name" $ }}'
           port: 80
+
+extraObjects:
+  - apiVersion: v1
+    kind: Service
+    name: adguard-dns
+    annotations:
+      metallb.universe.tf/address-pool: adguard-static
+    selector:
+      app.kubernetes.io/name: '{{ include "application.name" $ }}'
+    spec:
+      type: LoadBalancer
+      loadBalancerIP: 172.19.1.53
+      ports:
+        - port: 53
+          name: dns-udp
+          protocol: UDP
+          targetPort: 53
+        - port: 53
+          name: dns-tcp
+          protocol: TCP
+          targetPort: 53
