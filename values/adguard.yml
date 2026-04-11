@@ -16,7 +16,7 @@ deployment:
       protocol: TCP
     # initial setup web interface
     - containerPort: 3000
-      name: http
+      name: setup-http
       protocol: TCP
 
 httpRoute:
