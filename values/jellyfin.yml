@@ -20,14 +20,10 @@ ingress:
    - hosts:
        - jellyfin
   hosts:
-    - paths:
+    - host: jellyfin
+      paths:
         - path: /
           pathType: Prefix
-          backend:
-            service:
-              name: jellyfin
-              port:
-                number: 8096
 
 httpRoute:
   enabled: true
