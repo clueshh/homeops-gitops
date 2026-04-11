@@ -6,6 +6,8 @@ deployment:
   image:
     repository: adguard/adguardhome
     tag: v0.107.73
+  containerSecurityContext:
+    runAsNonRoot: false
   ports:
     - containerPort: 80
       name: http
