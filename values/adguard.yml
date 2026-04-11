@@ -69,13 +69,13 @@ extraObjects:
   - apiVersion: v1
     kind: Service
     metadata:
-      name: adguard-dns
+      name: '{{ include "application.name" $ }}-dns'
       annotations:
         metallb.io/loadBalancerIPs: 172.19.1.53
         metallb.io/address-pool: adguard-static
-    selector:
-      app.kubernetes.io/name: '{{ include "application.name" $ }}'
     spec:
+      selector:
+        app.kubernetes.io/name: '{{ include "application.name" $ }}'
       type: LoadBalancer
       ports:
         - port: 53
