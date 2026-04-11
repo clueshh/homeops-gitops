@@ -10,6 +10,15 @@ deployment:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
   ports:
+    # DNS
+    - port: 53
+      name: dns-udp
+      protocol: UDP
+      targetPort: 53
+    - port: 53
+      name: dns-tcp
+      protocol: TCP
+      targetPort: 53
     # main web interface
     - containerPort: 80
       name: http
@@ -21,7 +30,19 @@ deployment:
 
 service:
   enabled: true
+  type: LoadBalancer
+  loadBalancerIP: 172.19.1.53
+  annotations:
+    metallb.universe.tf/address-pool: adguard-static
   ports:
+    - port: 53
+      name: dns-udp
+      protocol: UDP
+      targetPort: 53
+    - port: 53
+      name: dns-tcp
+      protocol: TCP
+      targetPort: 53
     - port: 80
       name: http
       protocol: TCP
