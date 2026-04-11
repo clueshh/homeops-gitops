@@ -60,6 +60,13 @@ httpRoute:
     - matches:
         - path:
             type: PathPrefix
+            value: /setup
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 3000
+    - matches:
+        - path:
+            type: PathPrefix
             value: /
       backendRefs:
         - name: '{{ include "application.name" $ }}'
