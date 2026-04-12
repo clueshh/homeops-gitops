@@ -9,6 +9,14 @@ deployment:
   containerSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
+  volumeMounts:
+    tmpfs-run:
+      mountPath: /run
+  volumes:
+    tmpfs-run:
+      emptyDir:
+        medium: Memory
+        sizeLimit: 64Mi
   ports:
     - containerPort: 7878
       name: http
