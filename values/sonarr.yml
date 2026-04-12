@@ -10,7 +10,7 @@ deployment:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
   ports:
-    - containerPort: 7878
+    - containerPort: 8989
       name: http
       protocol: TCP
   env:
@@ -38,4 +38,4 @@ httpRoute:
             value: /
       backendRefs:
         - name: '{{ include "application.name" $ }}'
-          port: 7878
+          port: 8989

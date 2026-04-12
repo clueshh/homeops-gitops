@@ -12,7 +12,7 @@ deployment:
       add:
         - SYS_NICE
   ports:
-    - containerPort: 7878
+    - containerPort: 9191
       name: http
       protocol: TCP
   env:
@@ -44,4 +44,4 @@ httpRoute:
             value: /
       backendRefs:
         - name: '{{ include "application.name" $ }}'
-          port: 7878
+          port: 9191
