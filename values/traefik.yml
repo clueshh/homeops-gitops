@@ -4,6 +4,10 @@ api:
   dashboard: true
   insecure: true
 
+service:
+  annotations:
+    metallb.io/address-pool: homeops-address-pool
+
 # Configure Network Ports and EntryPoints
 # EntryPoints are the network listeners for incoming traffic.
 ports:
