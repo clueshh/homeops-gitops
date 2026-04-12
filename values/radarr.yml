@@ -1,0 +1,40 @@
+applicationName: radarr
+
+deployment:
+  enabled: true
+  image:
+    repository: lscr.io/linuxserver/radarr
+    tag: 15.01.26
+  # containerSecurityContext:
+  #   readOnlyRootFilesystem: false
+  #   runAsNonRoot: false
+  ports:
+    - containerPort: 7878
+      name: http
+      protocol: TCP
+  env:
+    PUID:
+      value: 1000
+    PGID:
+      value: 1000
+    TZ:
+      value: Pacific/Auckland
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  gatewayNamespace: traefik
+  hostnames:
+    - radarr.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 7878
