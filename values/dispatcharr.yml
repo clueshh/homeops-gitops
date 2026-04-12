@@ -1,0 +1,47 @@
+applicationName: dispatcharr
+
+deployment:
+  enabled: true
+  image:
+    repository: ghcr.io/dispatcharr/dispatcharr
+    tag: 0.22.1
+  containerSecurityContext:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      add:
+        - SYS_NICE
+  ports:
+    - containerPort: 7878
+      name: http
+      protocol: TCP
+  env:
+    DISPATCHARR_ENV:
+      value: aio
+    REDIS_HOST:
+      value: localhost
+    CELERY_BROKER_URL:
+      value: redis://localhost:6379/0
+    DISPATCHARR_LOG_LEVEL:
+      value: info
+    UWSGI_NICE_LEVEL:
+     value: "-5"   # uWSGI/FFmpeg/Streaming (default: 0, recommended: -5 for high priority)
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  gatewayNamespace: traefik
+  hostnames:
+    - dispatcharr.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 7878
