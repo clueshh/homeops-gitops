@@ -3,6 +3,7 @@ applicationName: radarr
 deployment:
   enabled: true
   image:
+    # https://github.com/linuxserver/docker-radarr/pkgs/container/radarr/versions
     repository: ghcr.io/linuxserver/radarr
     tag: 6.1.1
   # containerSecurityContext:
