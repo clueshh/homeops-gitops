@@ -3,8 +3,8 @@ applicationName: radarr
 deployment:
   enabled: true
   image:
-    repository: lscr.io/linuxserver/radarr
-    tag: 15.01.26
+    repository: ghcr.io/linuxserver/radarr
+    tag: 6.1.1
   # containerSecurityContext:
   #   readOnlyRootFilesystem: false
   #   runAsNonRoot: false
