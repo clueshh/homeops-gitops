@@ -5,6 +5,7 @@ dotenv:
   - .env
 
 vars:
+  KUBE_CONFIG: ~/.kube/config
   KUBE_CONTEXT: kind-homeops
   KIND_CLUSTER_NAME: homeops
   KIND_KUBE_CONTEXT: kind-homeops
@@ -37,10 +38,12 @@ tasks:
     cmds:
       - |
         kubectl create namespace external-secrets \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}}
       - |
         kubectl create secret generic \
           onepassword-token \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}} \
           --namespace external-secrets \
           --from-literal=token="${OP_CONNECT_TOKEN}"
@@ -51,10 +54,12 @@ tasks:
       - |
         kubectl apply \
           --server-side \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}} \
           -k configs/argocd
       - |
         kubectl apply \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}} \
           -k configs/argocd-apps
 
@@ -66,13 +71,18 @@ tasks:
   argocd:uninstall:
     desc: Uninstall ArgoCD and the argocd-apps project
     cmds:
-      - kubectl delete --context {{.KUBE_CONTEXT}} -k configs/argocd
+      - |
+        kubectl delete \
+          --kubeconfig {{.KUBE_CONFIG}} \
+          --context {{.KUBE_CONTEXT}} \
+          -k configs/argocd
 
   argocd:admin-password:
     desc: Get the initial admin password for ArgoCD
     cmds:
       - |
         kubectl get secret \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}} \
           --namespace argocd \
           argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
@@ -83,6 +93,7 @@ tasks:
     cmds:
       - |
         kubectl get secret \
+          --kubeconfig {{.KUBE_CONFIG}} \
           --context {{.KUBE_CONTEXT}} \
           --namespace monitoring \
           kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
