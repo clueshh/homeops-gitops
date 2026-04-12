@@ -6,9 +6,9 @@ deployment:
     # https://github.com/linuxserver/docker-radarr/pkgs/container/radarr/versions
     repository: lscr.io/linuxserver/radarr
     tag: 6.1.1
-  # containerSecurityContext:
-  #   readOnlyRootFilesystem: false
-  #   runAsNonRoot: false
+  containerSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
   ports:
     - containerPort: 7878
       name: http
