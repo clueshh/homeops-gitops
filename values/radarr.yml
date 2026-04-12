@@ -14,9 +14,9 @@ deployment:
       protocol: TCP
   env:
     PUID:
-      value: 1000
+      value: "1000"
     PGID:
-      value: 1000
+      value: "1000"
     TZ:
       value: Pacific/Auckland
 
