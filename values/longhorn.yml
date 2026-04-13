@@ -1,0 +1,9 @@
+httproute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - longhorn.lab.whitworth.nz

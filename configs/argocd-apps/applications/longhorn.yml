@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reloader
+  name: longhorn
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "30"
+    argocd.argoproj.io/sync-wave: "15"
 spec:
   project: infra
   sources:
-    - repoURL: https://stakater.github.io/stakater-charts
-      chart: reloader
-      targetRevision: 2.2.9
+    - repoURL: https://charts.longhorn.io
+      chart: longhorn
+      targetRevision: 1.11.0
       helm:
         version: v3
-        releaseName: reloader
+        releaseName: longhorn
         valueFiles:
-          - $values/values/reloader.yml
+          - $values/values/longhorn.yml
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
@@ -30,5 +30,5 @@ spec:
     - CreateNamespace=true
     - PruneLast=true
   destination:
-    namespace: reloader
+    namespace: longhorn-system
     server: https://kubernetes.default.svc
