@@ -2,24 +2,24 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  # - adguard.yml
+  - adguard.yml
   - argocd-apps.yml
   - argocd.yml
-  # - authentik.yml
+  - authentik.yml
   - cert-manager.yml
   - cloudnative-pg.yml
   - dashy.yml
-  # - dispatcharr.yml
+  - dispatcharr.yml
   - external-dns.yml
   - external-secrets.yml
-  # - jellyfin.yml
-  # - kube-prometheus-stack.yml
+  - jellyfin.yml
+  - kube-prometheus-stack.yml
   - longhorn.yml
   - metallb.yml
-  # - prowlarr.yml
+  - prowlarr.yml
   - qbittorrent.yml
-  # - radarr.yml
-  # - reloader.yml
-  # - sonarr.yml
+  - radarr.yml
+  - reloader.yml
+  - sonarr.yml
   - tailscale.yml
   - traefik.yml
