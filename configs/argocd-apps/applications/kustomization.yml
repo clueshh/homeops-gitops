@@ -16,6 +16,7 @@ resources:
   - kube-prometheus-stack.yml
   - metallb.yml
   - prowlarr.yml
+  - qbittorrent.yml
   - radarr.yml
   - reloader.yml
   - sonarr.yml

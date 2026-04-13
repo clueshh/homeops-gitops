@@ -1,0 +1,45 @@
+applicationName: qbittorrent
+
+deployment:
+  enabled: true
+  image:
+    # https://github.com/linuxserver/docker-qbittorrent/pkgs/container/qbittorrent/versions
+    repository: lscr.io/linuxserver/qbittorrent
+    tag: 5.1.4
+  containerSecurityContext:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+  ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+  env:
+    PUID:
+      value: "1000"
+    PGID:
+      value: "1000"
+    TZ:
+      value: Pacific/Auckland
+    WEBUI_PORT:
+      value: "8080"
+    TORRENTING_PORT:
+      value: "6881"
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  gatewayNamespace: traefik
+  hostnames:
+    - qbittorrent.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: '{{ include "application.name" $ }}'
+          port: 8080
