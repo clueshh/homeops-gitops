@@ -11,3 +11,10 @@ httproute:
       namespace: traefik
   hostnames:
     - longhorn.lab.whitworth.nz
+
+persistence:
+  # Use local-path provisioner by default
+  defaultClass: false
+
+defaultSettings:
+  allowCollectingLonghornUsageMetrics: false
