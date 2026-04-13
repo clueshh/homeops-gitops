@@ -1,6 +1,9 @@
 # https://github.com/AdguardTeam/Adguardhome/wiki/Configuration#configuration-file
 applicationName: adguard
 
+# TODO: Split DNS
+# https://burakberk.dev/split-horizon-dns-on-adguard-one-domain-two-networks-two-ip-addresses/
+# https://tailscale.com/learn/why-split-dns
 deployment:
   enabled: true
   image:
