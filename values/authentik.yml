@@ -103,4 +103,5 @@ additionalObjects:
           secret:
             name: authentik-db-credentials
       storage:
-        size: 5Gi
+        storageClass: longhorn
+        size: 500Mi
