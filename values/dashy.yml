@@ -156,6 +156,11 @@ configMap:
               url: https://adguard.lab.whitworth.nz
               description: DNS filtering
               tags: [self-hosted, dev, server]
+            - title: Longhorn
+              icon: hl-longhorn
+              url: https://longhorn.lab.whitworth.nz
+              description: Storage management
+              tags: [self-hosted, storage, server]
 
         - name: Lol
           icon: far fa-laugh
