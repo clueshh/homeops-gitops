@@ -1,6 +1,5 @@
 grafana:
   sidecar:
-    skipTlsVerify: true
     dashboards:
       enabled: true
       searchNamespace: ALL
