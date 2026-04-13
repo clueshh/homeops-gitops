@@ -20,4 +20,5 @@ persistence:
   defaultClass: false
 
 defaultSettings:
+  defaultReplicaCount: 2
   allowCollectingLonghornUsageMetrics: false
