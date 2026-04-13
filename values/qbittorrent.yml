@@ -25,6 +25,14 @@ deployment:
     TORRENTING_PORT:
       value: "6881"
 
+service:
+  enabled: true
+  ports:
+    - port: 8080
+      name: http
+      protocol: TCP
+      targetPort: 8080
+
 httpRoute:
   enabled: true
   parentRefs:

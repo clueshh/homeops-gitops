@@ -21,6 +21,14 @@ deployment:
     TZ:
       value: Pacific/Auckland
 
+service:
+  enabled: true
+  ports:
+    - port: 9696
+      name: http
+      protocol: TCP
+      targetPort: 9696
+
 httpRoute:
   enabled: true
   parentRefs:

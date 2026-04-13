@@ -21,6 +21,14 @@ deployment:
     TZ:
       value: Pacific/Auckland
 
+service:
+  enabled: true
+  ports:
+    - port: 7878
+      name: http
+      protocol: TCP
+      targetPort: 7878
+
 httpRoute:
   enabled: true
   parentRefs:
