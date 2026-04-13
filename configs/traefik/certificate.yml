@@ -6,7 +6,7 @@ spec:
   secretName: traefik-tls
   dnsNames:
     - '*.lab.whitworth.nz'
-    - 'temp.lab.whitworth.nz' # workaround letsencrypt rate limits
+    - 'temp.whitworth.nz' # workaround letsencrypt rate limits
   issuerRef:
     name: acme
     kind: Issuer
