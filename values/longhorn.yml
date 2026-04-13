@@ -1,3 +1,6 @@
+longhornUI:
+  replicas: 1
+
 preUpgradeChecker:
   # Must be disabled when installing using Argo CD.
   jobEnabled: false
