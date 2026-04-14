@@ -60,6 +60,7 @@ httpRoute:
             value: /
       backendRefs:
         - name: ak-outpost-sonarr
+          namespace: authentik
           port: 9000
         # - name: '{{ include "application.name" $ }}'
         #   port: 8989
