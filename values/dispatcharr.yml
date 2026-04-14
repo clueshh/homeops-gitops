@@ -27,6 +27,13 @@ deployment:
     UWSGI_NICE_LEVEL:
      value: "-5"   # uWSGI/FFmpeg/Streaming (default: 0, recommended: -5 for high priority)
 
+persistence:
+  enabled: true
+  mountPVC: true
+  mountPath: /data
+  storageClass: longhorn
+  storageSize: 200Mi
+
 httpRoute:
   enabled: true
   parentRefs:
