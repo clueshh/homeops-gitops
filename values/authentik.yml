@@ -104,4 +104,4 @@ additionalObjects:
             name: authentik-db-credentials
       storage:
         storageClass: longhorn
-        size: 750Mi
+        size: 1Gi
