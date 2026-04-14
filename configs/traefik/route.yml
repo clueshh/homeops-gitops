@@ -24,6 +24,10 @@ spec:
               type: ReplaceFullPath
               replaceFullPath: /dashboard/
             statusCode: 302
+      backendRefs:
+        - name: authentik-server
+          namespace: authentik
+          port: 80
 
     # Serve dashboard and api from Traefik service
     - matches:
@@ -34,8 +38,8 @@ spec:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: authentik-server
-          namespace: authentik
-          port: 80
-        # - name: traefik-internal
-        #   port: 8080
+        # - name: authentik-server
+        #   namespace: authentik
+        #   port: 80
+        - name: traefik-internal
+          port: 8080
