@@ -11,6 +11,8 @@ grafana:
       defaultDatasourceEnabled: true
       # https://github.com/prometheus-community/helm-charts/issues/5232#issuecomment-3689337458
       watchMethod: "SLEEP"
+      alertmanager:
+        enabled: false
   # http://docs.grafana.org/installation/configuration/
   grafana.ini:
     server:
