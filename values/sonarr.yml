@@ -20,6 +20,14 @@ deployment:
       value: "1000"
     TZ:
       value: Pacific/Auckland
+  volumes:
+    media:
+      persistentVolumeClaim:
+        claimName: jellyfin-media
+        namespace: jellyfin
+  volumeMounts:
+    media:
+       mountPath: /media
 
 persistence:
   enabled: true
