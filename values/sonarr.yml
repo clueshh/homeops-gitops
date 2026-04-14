@@ -61,6 +61,6 @@ httpRoute:
       backendRefs:
         - name: authentik-server
           namespace: authentik
-          port: 9000
+          port: 80
         # - name: '{{ include "application.name" $ }}'
         #   port: 8989
