@@ -21,12 +21,44 @@ deployment:
     TZ:
       value: Pacific/Auckland
   volumes:
+    config:
+      configMap:
+        name: '{{ template "application.name" . }}-config'
     media:
       persistentVolumeClaim:
         claimName: jellyfin-media
   volumeMounts:
+    config:
+       mountPath: /config
+       subPath: config.xml
     media:
        mountPath: /media
+
+configMap:
+  enabled: true
+  files:
+   config:
+      # Just here to set AuthenticationMethod to External so that Radarr doesn't
+      # try to use its own authentication and instead relies on Traefik + Authentik
+      config.xml: |
+        <Config>
+          <BindAddress>*</BindAddress>
+          <Port>7878</Port>
+          <SslPort>9898</SslPort>
+          <EnableSsl>False</EnableSsl>
+          <LaunchBrowser>True</LaunchBrowser>
+          <ApiKey>22cef46316ec42f597cfe33caadbd2be</ApiKey>
+          <AuthenticationMethod>External</AuthenticationMethod>
+          <AuthenticationRequired>Enabled</AuthenticationRequired>
+          <Branch>master</Branch>
+          <LogLevel>debug</LogLevel>
+          <SslCertPath></SslCertPath>
+          <SslCertPassword></SslCertPassword>
+          <UrlBase></UrlBase>
+          <InstanceName>Radarr</InstanceName>
+          <UpdateMechanism>Docker</UpdateMechanism>
+          <AnalyticsEnabled>False</AnalyticsEnabled>
+        </Config>
 
 persistence:
   enabled: true
