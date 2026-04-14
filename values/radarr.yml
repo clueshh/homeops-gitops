@@ -29,8 +29,7 @@ deployment:
         claimName: jellyfin-media
   volumeMounts:
     config:
-       mountPath: /config
-       subPath: config.xml
+       mountPath: /config/config.xml
     media:
        mountPath: /media
 
