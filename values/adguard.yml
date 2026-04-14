@@ -68,6 +68,14 @@ httpRoute:
         - name: '{{ include "application.name" $ }}'
           port: 80
 
+persistence:
+  enabled: true
+  mountPVC: true
+  mountPath: /opt/adguardhome
+  accessMode: ReadWriteOnce
+  storageClass: longhorn
+  storageSize: 50Mi
+
 extraObjects:
   - apiVersion: v1
     kind: Service
