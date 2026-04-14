@@ -28,14 +28,18 @@ deployment:
     - containerPort: 3000
       name: setup-http
       protocol: TCP
-  # TODO: Add persistence so configuration is retained across pod restarts.
   volumes:
-    # adguard-config:
-    #   persistentVolumeClaim:
-    #     claimName: adguard-pvc
+    adguard-config:
+      persistentVolumeClaim:
+        claimName: adguard-conf
+    adguard-work:
+      persistentVolumeClaim:
+        claimName: adguard-work
   volumeMounts:
-    # adguard-config:
-    #    mountPath: /opt/adguardhome/conf
+    adguard-config:
+       mountPath: /opt/adguardhome/conf
+    adguard-work:
+       mountPath: /opt/adguardhome/work
 
 service:
   enabled: true
@@ -68,15 +72,29 @@ httpRoute:
         - name: '{{ include "application.name" $ }}'
           port: 80
 
-persistence:
-  enabled: true
-  mountPVC: true
-  mountPath: /opt/adguardhome
-  accessMode: ReadWriteOnce
-  storageClass: longhorn
-  storageSize: 50Mi
-
 extraObjects:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: adguard-conf
+    spec:
+      storageClassName: longhorn
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Ki
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: adguard-work
+    spec:
+      storageClassName: longhorn
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 50Mi
   - apiVersion: v1
     kind: Service
     metadata:
