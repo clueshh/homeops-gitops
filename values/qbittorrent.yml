@@ -33,6 +33,13 @@ service:
       protocol: TCP
       targetPort: 8080
 
+persistence:
+  enabled: true
+  mountPVC: true
+  mountPath: /config
+  storageClass: longhorn
+  storageSize: 10Mi
+
 httpRoute:
   enabled: true
   parentRefs:
