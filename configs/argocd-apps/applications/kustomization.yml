@@ -15,6 +15,7 @@ resources:
   - jellyfin.yml
   - kube-prometheus-stack.yml
   - longhorn.yml
+  - media-storage.yml
   - metallb.yml
   - prowlarr.yml
   - qbittorrent.yml

@@ -1,12 +1,12 @@
 persistence:
   config:
     enabled: true
-    size: 5Gi
-    storageClass: ''
+    accessMode: ReadWriteOnce
+    size: 3Gi
+    storageClass: longhorn
   media:
     enabled: true
-    size: 100Gi
-    storageClass: ''
+    existingClaim: media
 
 metrics:
   enabled: true
