@@ -30,5 +30,5 @@ spec:
     - CreateNamespace=true
     - PruneLast=true
   destination:
-    namespace: sonarr
+    namespace: media-system
     server: https://kubernetes.default.svc

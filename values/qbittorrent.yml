@@ -24,6 +24,13 @@ deployment:
       value: "8080"
     TORRENTING_PORT:
       value: "6881"
+  volumes:
+    media:
+      persistentVolumeClaim:
+        claimName: jellyfin-media
+  volumeMounts:
+    media:
+       mountPath: /media/torrents
 
 service:
   enabled: true

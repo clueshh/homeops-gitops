@@ -24,7 +24,6 @@ deployment:
     media:
       persistentVolumeClaim:
         claimName: jellyfin-media
-        namespace: jellyfin
   volumeMounts:
     media:
        mountPath: /media
