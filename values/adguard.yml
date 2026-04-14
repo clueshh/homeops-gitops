@@ -83,7 +83,7 @@ extraObjects:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 100Ki
+          storage: 10Mi
   - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
