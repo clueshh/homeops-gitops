@@ -6,7 +6,9 @@ persistence:
     storageClass: longhorn
   media:
     enabled: true
-    existingClaim: media
+    accessMode: ReadWriteMany
+    size: 25Gi
+    storageClass: longhorn
 
 metrics:
   enabled: true
