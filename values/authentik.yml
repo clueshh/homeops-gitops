@@ -108,7 +108,7 @@ additionalObjects:
   - apiVersion: gateway.networking.k8s.io/v1beta1
     kind: ReferenceGrant
     metadata:
-      name: allow-sonarr-to-authentik
+      name: allow-media-to-authentik
     spec:
       from:
         - group: gateway.networking.k8s.io
@@ -117,4 +117,4 @@ additionalObjects:
       to:
         - group: ""
           kind: Service
-          name: ak-outpost-sonarr
+          name: authentik-server

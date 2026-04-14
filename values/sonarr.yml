@@ -59,7 +59,7 @@ httpRoute:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: ak-outpost-sonarr
+        - name: authentik-server
           namespace: authentik
           port: 9000
         # - name: '{{ include "application.name" $ }}'
