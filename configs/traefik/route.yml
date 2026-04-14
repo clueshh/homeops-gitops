@@ -34,5 +34,8 @@ spec:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: traefik-internal
-          port: 8080
+        - name: authentik-server
+          namespace: authentik
+          port: 80
+        # - name: traefik-internal
+        #   port: 8080
