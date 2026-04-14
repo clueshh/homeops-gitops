@@ -31,6 +31,8 @@ deployment:
 persistence:
   enabled: true
   mountPVC: true
+  # NOTE: Must manually set <AuthenticationMethod>External</AuthenticationMethod>
+  #       in /config/config.xml for Authentik to work with Radarr
   mountPath: /config
   storageClass: longhorn
   storageSize: 150Mi
