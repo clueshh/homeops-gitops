@@ -108,12 +108,15 @@ additionalObjects:
   - apiVersion: gateway.networking.k8s.io/v1beta1
     kind: ReferenceGrant
     metadata:
-      name: allow-media-to-authentik
+      name: allow-access-authentik
     spec:
       from:
         - group: gateway.networking.k8s.io
           kind: HTTPRoute
           namespace: media-system
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
+          namespace: longhorn-system
       to:
         - group: ""
           kind: Service
