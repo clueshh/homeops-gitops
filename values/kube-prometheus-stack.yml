@@ -8,7 +8,7 @@ grafana:
       searchNamespace: ALL
     datasources:
       enabled: true
-      defaultDatasourceEnabled: false
+      defaultDatasourceEnabled: true
       # https://github.com/prometheus-community/helm-charts/issues/5232#issuecomment-3689337458
       watchMethod: "SLEEP"
   # http://docs.grafana.org/installation/configuration/
