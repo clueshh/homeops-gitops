@@ -30,7 +30,8 @@ deployment:
         claimName: jellyfin-media
   volumeMounts:
     media:
-       mountPath: /media/torrents
+      subPath: torrents
+      mountPath: /media/torrents
 
 service:
   enabled: true
