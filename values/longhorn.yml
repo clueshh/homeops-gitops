@@ -1,3 +1,4 @@
+# https://github.com/longhorn/charts/tree/v1.12.x/charts/longhorn
 longhornUI:
   replicas: 1
 
@@ -6,7 +7,7 @@ preUpgradeChecker:
   jobEnabled: false
 
 httproute:
-  enabled: true
+  enabled: false
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
@@ -24,3 +25,26 @@ defaultSettings:
   defaultReplicaCount: 2
   allowCollectingLonghornUsageMetrics: false
   storageReservedPercentageForDefaultDisk: 10
+
+extraObjects:
+  - apiVersion: gateway.networking.k8s.io/v1
+    kind: HTTPRoute
+    metadata:
+      name: longhorn
+    spec:
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: traefik-gateway
+          namespace: traefik
+      hostnames:
+        - longhorn.lab.whitworth.nz
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: /
+          backendRefs:
+            - name: authentik-server
+              namespace: authentik
+              port: 80
