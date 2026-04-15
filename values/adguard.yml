@@ -69,8 +69,11 @@ httpRoute:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: '{{ include "application.name" $ }}'
+        - name: authentik-server
+          namespace: authentik
           port: 80
+        # - name: '{{ include "application.name" $ }}'
+        #   port: 80
 
 extraObjects:
   - apiVersion: v1
