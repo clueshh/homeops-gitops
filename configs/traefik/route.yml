@@ -34,6 +34,10 @@ spec:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: authentik-server
-          namespace: authentik
-          port: 80
+        # Authentik does currently not support Proxy auth with subpaths
+        # https://github.com/goauthentik/authentik/issues/2305
+        # - name: authentik-server
+        #   namespace: authentik
+        #   port: 80
+        - name: traefik-internal
+          port: 8080
