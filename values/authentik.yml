@@ -11,6 +11,13 @@ authentik:
 server:
   metrics:
     enabled: true
+  volumeMounts:
+    - name: authentik-data
+      mountPath: /data
+  volumes:
+    - name: authentik-data
+      persistentVolumeClaim:
+        claimName: authentik-data
   route:
     main:
       enabled: true
@@ -31,6 +38,17 @@ worker:
     enabled: true
 
 additionalObjects:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: authentik-data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 1Gi
   - apiVersion: external-secrets.io/v1
     kind: ExternalSecret
     metadata:
