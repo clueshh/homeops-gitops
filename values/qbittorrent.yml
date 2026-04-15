@@ -64,6 +64,8 @@ httpRoute:
             type: PathPrefix
             value: /
       backendRefs:
+        # TODO: Get this working with API key auth available on qbittorrent v5.2.0+
+        # https://github.com/qbittorrent/qBittorrent/wiki/API-Key-Authentication-(%E2%89%A5v5.2.0)/
         - name: authentik-server
           namespace: authentik
           port: 80
