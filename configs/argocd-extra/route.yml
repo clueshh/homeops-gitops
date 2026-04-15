@@ -17,8 +17,11 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - group: ''
-          kind: Service
-          name: argocd-server
+        - name: authentik-server
+          namespace: authentik
           port: 80
-          weight: 1
+        # - group: ''
+        #   kind: Service
+        #   name: argocd-server
+        #   port: 80
+        #   weight: 1
