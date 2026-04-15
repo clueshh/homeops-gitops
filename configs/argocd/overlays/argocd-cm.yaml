@@ -9,7 +9,7 @@ data:
       - config:
           issuer: https://auth.lab.whitworth.nz/application/o/argo-cd/
           clientID: 84jvn8GMB34DMjR27fRQ3fSBoplKaCGYf1EYIlRs
-          clientSecret: $dex.authentik.clientSecret
+          clientSecret: $argocd-oidc-secret:dex.authentik.clientSecret
           insecureEnableGroups: true
           scopes:
             - openid
