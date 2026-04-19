@@ -7,3 +7,9 @@ setDefaultUser:
   enabled: true
   user:
     existingSecret: influxdb-auth
+
+initScripts:
+  enabled: true
+  scripts:
+    init.iql: |+
+      CREATE DATABASE "default" WITH DURATION 30d REPLICATION 1 NAME "rp_30d"
