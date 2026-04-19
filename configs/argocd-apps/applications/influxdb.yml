@@ -9,8 +9,8 @@ spec:
   project: infra
   sources:
     - repoURL: https://helm.influxdata.com
-      chart: influxdb2
-      targetRevision: 2.1.2
+      chart: influxdb
+      targetRevision: 4.12.5
       helm:
         version: v3
         releaseName: influxdb
@@ -33,5 +33,5 @@ spec:
     - CreateNamespace=true
     - PruneLast=true
   destination:
-    namespace: influxdb
+    namespace: monitoring
     server: https://kubernetes.default.svc

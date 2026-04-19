@@ -35,8 +35,6 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: garmin-grafana
       server: https://kubernetes.default.svc
-    - namespace: influxdb
-      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/clueshh/homeops-gitops.git
     - https://github.com/metallb/metallb
