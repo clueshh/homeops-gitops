@@ -40,6 +40,45 @@ grafana:
       secretKeyRef:
         name: grafana-oauth-credentials
         key: clientSecret
+    INFLUXDB_USERNAME:
+      secretKeyRef:
+        name: influxdb-credentials
+        key: INFLUXDB_USERNAME
+    INFLUXDB_PASSWORD:
+      secretKeyRef:
+        name: influxdb-credentials
+        key: INFLUXDB_PASSWORD
+  plugins:
+    - marcusolsson-hourly-heatmap-panel
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - uid: DS_GARMIN_STATS
+          name: GarminInflux
+          type: influxdb
+          url: "http://influxdb-influxdb2.influxdb.svc.cluster.local:8086"
+          database: garmin
+          user: $__env{INFLUXDB_USERNAME}
+          secureJsonData:
+            password: $__env{INFLUXDB_PASSWORD}
+  dashboards:
+    garmin:
+      garmin-dashboard:
+        gnetId: 23245
+        revision: 2
+        datasource:
+          - name: DS_GARMIN_STATS
+            value: GarminInflux
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: garmin
+          folder: Garmin
+          type: file
+          options:
+            path: /var/lib/grafana/dashboards/garmin
 
 extraManifests:
   - apiVersion: gateway.networking.k8s.io/v1
@@ -134,3 +173,20 @@ extraManifests:
             decodingStrategy: None
             key: Authentik Grafana Provider/clientSecret
             metadataPolicy: None
+  - apiVersion: external-secrets.io/v1
+    kind: ExternalSecret
+    metadata:
+      name: influxdb-credentials
+    spec:
+      secretStoreRef:
+        name: 1password
+        kind: ClusterSecretStore
+      target:
+        creationPolicy: Owner
+        template:
+          data:
+            INFLUXDB_USERNAME: admin
+      data:
+        - secretKey: INFLUXDB_PASSWORD
+          remoteRef:
+            key: InfluxDB Credentials/admin-password
