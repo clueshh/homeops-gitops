@@ -1,6 +1,18 @@
 alertmanager:
   enabled: false
 
+prometheus:
+  prometheusSpec:
+    # Discover ServiceMonitors in ALL namespaces
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+    # Discover PodMonitors in ALL namespaces
+    podMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
+
 grafana:
   sidecar:
     dashboards:
