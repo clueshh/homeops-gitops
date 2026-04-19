@@ -190,4 +190,7 @@ extraManifests:
       data:
         - secretKey: INFLUXDB_PASSWORD
           remoteRef:
+            conversionStrategy: Default
+            decodingStrategy: None
             key: InfluxDB Credentials/admin-password
+            metadataPolicy: None
