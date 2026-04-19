@@ -192,5 +192,5 @@ extraManifests:
           remoteRef:
             conversionStrategy: Default
             decodingStrategy: None
-            key: InfluxDB Credentials/admin-password
+            key: InfluxDB Credentials/admin-token
             metadataPolicy: None
