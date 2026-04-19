@@ -18,5 +18,6 @@ spec:
             value: /
       backendRefs:
         - kind: Service
+          # TODO: Use authentik
           name: influxdb-influxdb2
           port: 80
