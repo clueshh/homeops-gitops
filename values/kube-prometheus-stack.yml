@@ -42,12 +42,12 @@ grafana:
         key: clientSecret
     INFLUXDB_USERNAME:
       secretKeyRef:
-        name: influxdb-credentials
-        key: INFLUXDB_USERNAME
+        name: influxdb-auth
+        key: influxdb-user
     INFLUXDB_PASSWORD:
       secretKeyRef:
-        name: influxdb-credentials
-        key: INFLUXDB_PASSWORD
+        name: influxdb-auth
+        key: influxdb-password
   plugins:
     - marcusolsson-hourly-heatmap-panel
   datasources:
@@ -172,27 +172,4 @@ extraManifests:
             conversionStrategy: Default
             decodingStrategy: None
             key: Authentik Grafana Provider/clientSecret
-            metadataPolicy: None
-  - apiVersion: external-secrets.io/v1
-    kind: ExternalSecret
-    metadata:
-      name: influxdb-credentials
-    spec:
-      secretStoreRef:
-        name: 1password
-        kind: ClusterSecretStore
-      target:
-        creationPolicy: Owner
-      data:
-        - secretKey: INFLUXDB_USERNAME
-          remoteRef:
-            conversionStrategy: Default
-            decodingStrategy: None
-            key: InfluxDB Credentials/username
-            metadataPolicy: None
-        - secretKey: INFLUXDB_PASSWORD
-          remoteRef:
-            conversionStrategy: Default
-            decodingStrategy: None
-            key: InfluxDB Credentials/password
             metadataPolicy: None
