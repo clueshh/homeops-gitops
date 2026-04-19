@@ -57,7 +57,7 @@ grafana:
         - uid: DS_GARMIN_STATS
           name: GarminInflux
           type: influxdb
-          url: http://influxdb-influxdb2.influxdb.svc.cluster.local:80
+          url: http://influxdb.influxdb.svc.cluster.local:8086
           database: default
           user: $__env{INFLUXDB_USERNAME}
           secureJsonData:

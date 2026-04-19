@@ -19,5 +19,5 @@ spec:
       backendRefs:
         - kind: Service
           # TODO: Use authentik
-          name: influxdb-influxdb2
-          port: 80
+          name: influxdb
+          port: 8086

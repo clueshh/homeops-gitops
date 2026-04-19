@@ -29,9 +29,9 @@ spec:
                 name: influxdb-auth
           env:
             - name: INFLUXDB_HOST
-              value: "influxdb-influxdb2.influxdb.svc.cluster.local"
+              value: "influxdb.monitoring.svc.cluster.local"
             - name: INFLUXDB_PORT
-              value: "80"
+              value: "8086"
             - name: INFLUXDB_DATABASE
               value: "default"
             - name: INFLUXDB_ENDPOINT_IS_HTTP
