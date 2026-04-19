@@ -31,7 +31,7 @@ spec:
             - name: INFLUXDB_HOST
               value: "influxdb-influxdb2.influxdb.svc.cluster.local"
             - name: INFLUXDB_PORT
-              value: "8086"
+              value: "80"
             - name: INFLUXDB_DATABASE
               value: "garmin"
             - name: INFLUXDB_ENDPOINT_IS_HTTP
