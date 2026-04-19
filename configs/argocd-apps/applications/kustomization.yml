@@ -13,7 +13,7 @@ resources:
   - external-dns.yml
   - external-secrets.yml
   - garmin-grafana.yml
-  # - influxdb.yml
+  - influxdb.yml
   - jellyfin.yml
   - kube-prometheus-stack.yml
   - longhorn.yml
