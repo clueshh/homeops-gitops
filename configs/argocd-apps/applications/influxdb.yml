@@ -19,6 +19,9 @@ spec:
     - repoURL: https://github.com/clueshh/homeops-gitops.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      path: configs/influxdb
+      targetRevision: HEAD
   syncPolicy:
     automated:
       allowEmpty: true
