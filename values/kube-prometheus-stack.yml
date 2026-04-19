@@ -186,6 +186,7 @@ extraManifests:
         template:
           data:
             INFLUXDB_USERNAME: admin
+            INFLUXDB_PASSWORD: "{{ `{{ .INFLUXDB_PASSWORD }}` }}"
       data:
         - secretKey: INFLUXDB_PASSWORD
           remoteRef:
