@@ -63,6 +63,9 @@ grafana:
           secureJsonData:
             password: $__env{INFLUXDB_PASSWORD}
   dashboards:
+    default:
+      argocd-dashboard:
+        url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
     garmin:
       garmin-dashboard:
         gnetId: 23245
@@ -70,13 +73,18 @@ grafana:
         datasource:
           - name: DS_GARMIN_STATS
             value: GarminInflux
-    argocd:
-      argocd-dashboard:
-        url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
       providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
         - name: garmin
           folder: Garmin
           type: file
