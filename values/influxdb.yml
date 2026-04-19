@@ -1,0 +1,4 @@
+persistence:
+  enabled: true
+  storageClass: longhorn
+  size: 2Gi

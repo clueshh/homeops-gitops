@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: garmin-grafana
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: infra
+  sources:
+    - repoURL: ghcr.io/arpanghosh8453/garmin-grafana
+      chart: garmin-grafana
+      targetRevision: 0.1.0
+      helm:
+        version: v3
+        releaseName: garmin-grafana
+        valueFiles:
+          - $values/values/garmin-grafana.yml
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+  destination:
+    namespace: garmin-grafana
+    server: https://kubernetes.default.svc

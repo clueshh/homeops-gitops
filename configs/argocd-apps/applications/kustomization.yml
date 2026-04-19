@@ -12,10 +12,10 @@ resources:
   - dispatcharr.yml
   - external-dns.yml
   - external-secrets.yml
+  - influxdb.yml
   - jellyfin.yml
   - kube-prometheus-stack.yml
   - longhorn.yml
-  # - media-storage.yml
   - metallb.yml
   - prowlarr.yml
   - qbittorrent.yml
