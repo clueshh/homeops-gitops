@@ -33,7 +33,7 @@ spec:
             - name: INFLUXDB_PORT
               value: "80"
             - name: INFLUXDB_DATABASE
-              value: "garmin"
+              value: "default"
             - name: INFLUXDB_ENDPOINT_IS_HTTP
               value: "True"
             - name: INFLUXDB_VERSION

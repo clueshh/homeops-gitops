@@ -5,3 +5,5 @@ persistence:
 
 adminUser:
   existingSecret: influxdb-auth
+  bucket: default
+  retention_policy: 30d
