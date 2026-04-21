@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: tapo-exporter-config
 data:
+  # NOTE: Must enable 3rd party compatibility in the Tapo app
   tapo.yaml: |
     devices:
       homelab: "192.168.1.26"

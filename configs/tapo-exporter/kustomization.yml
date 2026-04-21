@@ -5,3 +5,5 @@ resources:
   - configmap.yml
   - deployment.yml
   - external-secret.yml
+  - service-monitor.yml
+  - service.yml

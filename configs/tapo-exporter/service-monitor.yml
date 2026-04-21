@@ -1,0 +1,10 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tapo-p110-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tapo-p110-exporter
+  endpoints:
+    - port: http

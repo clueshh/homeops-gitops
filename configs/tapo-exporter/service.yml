@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tapo-p110-exporter
+  labels:
+    app.kubernetes.io/name: tapo-p110-exporter
+spec:
+  selector:
+    app.kubernetes.io/name: tapo-p110-exporter
+  ports:
+    - name: http
+      port: 9333
+      targetPort: 9333
