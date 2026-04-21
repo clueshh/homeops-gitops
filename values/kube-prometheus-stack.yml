@@ -89,6 +89,9 @@ grafana:
     default:
       argocd-dashboard:
         url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
+      longhorn-dashboard:
+        gnetId: 16888
+        revision: 11
       garmin-dashboard:
         gnetId: 23245
         revision: 2
