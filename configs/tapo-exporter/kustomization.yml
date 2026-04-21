@@ -7,3 +7,11 @@ resources:
   - external-secret.yml
   - service-monitor.yml
   - service.yml
+
+configMapGenerator:
+  - name: grafana-dashboard-tapo-p110-exporter
+    files:
+      - dashboard.json
+    options:
+      labels:
+        grafana_dashboard: "1"

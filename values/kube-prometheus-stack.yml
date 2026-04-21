@@ -89,11 +89,6 @@ grafana:
     default:
       argocd-dashboard:
         url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
-      tapo-p110-exporter:
-        url: https://raw.githubusercontent.com/PovilasID/P110-Exporter/refs/heads/master/Energy%20monitoring-1664376150978.json
-        datasource:
-          - name: DS_PROMETHEUS
-            value: Prometheus
       garmin-dashboard:
         gnetId: 23245
         revision: 2
