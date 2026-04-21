@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - route.yml
   - external-secret.yml
+  - service-monitors.yml
