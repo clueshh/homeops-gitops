@@ -4,6 +4,9 @@ provider:
 
 logLevel: info
 
+serviceMonitor:
+  enabled: true
+
 sources:
   - gateway-httproute
 
