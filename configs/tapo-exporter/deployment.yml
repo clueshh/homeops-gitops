@@ -4,6 +4,8 @@ metadata:
   name: tapo-p110-exporter
   labels:
     app.kubernetes.io/name: tapo-p110-exporter
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   strategy:
