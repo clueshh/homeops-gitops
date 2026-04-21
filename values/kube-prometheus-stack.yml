@@ -3,6 +3,17 @@ alertmanager:
 
 prometheus:
   prometheusSpec:
+    retention: 10d
+    retentionSize: 3Gi
+    storageSpec:
+     volumeClaimTemplate:
+       spec:
+         storageClassName: longhorn
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 3Gi
+
     # Discover ServiceMonitors in ALL namespaces
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}
