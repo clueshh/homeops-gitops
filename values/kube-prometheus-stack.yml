@@ -98,6 +98,9 @@ grafana:
       external-dns-dashboard:
         gnetId: 15038
         revision: 3
+      cert-manager-dashboard:
+        gnetId: 20842
+        revision: 3
       garmin-dashboard:
         gnetId: 23245
         revision: 2
