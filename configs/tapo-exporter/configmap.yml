@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tapo-exporter-config
+data:
+  tapo.yaml: |
+    devices:
+      study: "192.168.1.102"
+      living_room: "192.168.1.183"

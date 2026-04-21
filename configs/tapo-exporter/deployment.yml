@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tapo-p110-exporter
+  labels:
+    app.kubernetes.io/name: tapo-p110-exporter
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tapo-p110-exporter
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: tapo-p110-exporter
+    spec:
+      containers:
+        - name: tapo-p110-exporter
+          image: docker.io/povilasid/p110-exporter
+          envFrom:
+            - secretRef:
+                name: tapo-exporter-auth
+          env:
+            - name: PORT
+              value: "9333"
+            - name: MAX_RETRY_COUNT
+              value: "3"
+          ports:
+            - name: http
+              containerPort: 9333
+          volumeMounts:
+            - name: tapo-config
+              mountPath: /app/tapo.yaml
+              subPath: tapo.yaml
+              readOnly: true
+      volumes:
+        - name: tapo-config
+          configMap:
+            name: tapo-exporter-config

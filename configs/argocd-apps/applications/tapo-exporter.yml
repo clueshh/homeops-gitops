@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tapo-exporter
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: infra
+  sources:
+    - repoURL: https://github.com/clueshh/homeops-gitops.git
+      path: configs/tapo-exporter
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc

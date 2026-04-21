@@ -24,4 +24,5 @@ resources:
   - reloader.yml
   - sonarr.yml
   - tailscale.yml
+  - tapo-exporter.yml
   - traefik.yml
