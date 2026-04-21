@@ -19,7 +19,7 @@ ingress:
   enabled: true
   className: tailscale
   annotations:
-    tailscale.com/ephemeral: "true"
+    tailscale.com/ingress-hostname: jellyfin
     tailscale.com/tags: "tag:k8s,tag:jellyfin"
   tls:
    - hosts:
