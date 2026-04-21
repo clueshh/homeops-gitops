@@ -2,6 +2,10 @@
 longhornUI:
   replicas: 1
 
+metrics:
+  serviceMonitor:
+    enabled: true
+
 preUpgradeChecker:
   # Must be disabled when installing using Argo CD.
   jobEnabled: false
