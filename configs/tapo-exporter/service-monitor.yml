@@ -8,6 +8,6 @@ spec:
       app.kubernetes.io/name: tapo-p110-exporter
   endpoints:
     - port: http
-      relabelings:
+      metricRelabelings:
         - targetLabel: machine
           replacement: homeops
