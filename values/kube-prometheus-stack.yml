@@ -4,7 +4,7 @@ alertmanager:
 prometheus:
   prometheusSpec:
     retention: 10d
-    retentionSize: 3Gi
+    retentionSize: 3GiB
     storageSpec:
      volumeClaimTemplate:
        spec:
