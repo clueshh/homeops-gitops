@@ -18,6 +18,9 @@ metrics:
 ingress:
   enabled: true
   className: tailscale
+  annotations:
+    tailscale.com/ephemeral: "true"
+    tailscale.com/tags: "tag:k8s,tag:jellyfin"
   tls:
    - hosts:
        - jellyfin
