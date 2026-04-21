@@ -92,6 +92,9 @@ grafana:
       longhorn-dashboard:
         gnetId: 16888
         revision: 11
+      traefik-dashboard:
+        gnetId: 17347
+        revision: 9
       garmin-dashboard:
         gnetId: 23245
         revision: 2
