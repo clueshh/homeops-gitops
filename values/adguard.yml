@@ -103,6 +103,8 @@ extraObjects:
     metadata:
       name: '{{ include "application.name" $ }}-dns'
       annotations:
+        tailscale.com/expose: "true"
+        tailscale.com/tags: "tag:k8s,tag:adguard"
         metallb.io/loadBalancerIPs: 192.168.1.53
         metallb.io/address-pool: adguard-static
     spec:
