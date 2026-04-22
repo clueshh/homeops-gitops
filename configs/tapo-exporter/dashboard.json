@@ -225,10 +225,13 @@
             "type": "prometheus",
             "uid": "Prometheus"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
+          "exemplar": false,
           "expr": "tapo_p110_device_count{job=\"$job\", machine=\"$machine\"}",
+          "format": "table",
+          "instant": true,
           "legendFormat": "{{machine}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
