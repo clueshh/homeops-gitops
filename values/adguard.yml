@@ -16,8 +16,8 @@ deployment:
     - name: tailscale-sidebar
       image: ghcr.io/tailscale/tailscale:latest
       env:
-        - name: TS_KUBE_SECRET
-          value: tailscale-auth
+        # - name: TS_KUBE_SECRET
+        #   value: tailscale-auth
         - name: TS_AUTHKEY
           valueFrom:
             secretKeyRef:
