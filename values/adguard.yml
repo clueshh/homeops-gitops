@@ -27,7 +27,7 @@ deployment:
           value: "false"
         # required for MagicDNS
         - name: TS_ACCEPT_DNS
-          value: 'true'
+          value: 'false'
         - name: TS_EXTRA_ARGS
           value: '--advertise-tags=tag:adguard'
         - name: POD_NAME
@@ -39,6 +39,7 @@ deployment:
             fieldRef:
               fieldPath: metadata.uid
       securityContext:
+        privileged: true
         capabilities:
            add:
             - NET_ADMIN
