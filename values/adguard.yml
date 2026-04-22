@@ -89,7 +89,7 @@ rbac:
       - apiGroups: [""]
         resourceNames: ["tailscale-auth"]
         resources: ["secrets"]
-        verbs: ["get", "update", "patch"]
+        verbs: ["get", "update", "patch", "create"]
 
 service:
   enabled: true
