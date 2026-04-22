@@ -23,13 +23,14 @@ deployment:
             secretKeyRef:
               name: tailscale-auth
               key: TS_AUTHKEY
+        - name: TS_HOSTNAME
+          value: adguard
         - name: TS_USERSPACE
           value: "false"
-        # required for MagicDNS
         - name: TS_ACCEPT_DNS
           value: 'false'
         - name: TS_EXTRA_ARGS
-          value: '--advertise-tags=tag:adguard'
+          value: '--advertise-tags=tag:k8s,tag:adguard'
         - name: POD_NAME
           valueFrom:
             fieldRef:
@@ -39,7 +40,6 @@ deployment:
             fieldRef:
               fieldPath: metadata.uid
       securityContext:
-        privileged: true
         capabilities:
            add:
             - NET_ADMIN
