@@ -7,3 +7,4 @@ data:
   tapo.yaml: |
     devices:
       homelab: "192.168.1.26"
+      desk: "192.168.1.27"
