@@ -175,7 +175,13 @@ extraObjects:
       secretStoreRef:
         kind: ClusterSecretStore
         name: 1password
+      target:
+        template:
+          data:
+            # NOTE: Set ephemeral to false to prevent the machine from being
+            #       removed when the server/pod goes offline.
+            TS_AUTHKEY: "{{ `{{ .clientSecret }}` }}?ephemeral=false"
       data:
-        - secretKey: TS_AUTHKEY
+        - secretKey: clientSecret
           remoteRef:
             key: Tailscale Operator/clientSecret
