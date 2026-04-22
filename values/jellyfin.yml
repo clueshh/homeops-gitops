@@ -13,23 +13,6 @@ persistence:
 metrics:
   enabled: true
 
-# HTTPS access via Tailscale Ingress
-# Access at: https://jellyfin.tail72123.ts.net
-ingress:
-  enabled: true
-  className: tailscale
-  annotations:
-    tailscale.com/ingress-hostname: jellyfin
-    tailscale.com/tags: "tag:k8s,tag:jellyfin"
-  tls:
-   - hosts:
-       - jellyfin
-  hosts:
-    - host: jellyfin
-      paths:
-        - path: /
-          pathType: Prefix
-
 httpRoute:
   enabled: true
   parentRefs:
