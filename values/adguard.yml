@@ -12,6 +12,28 @@ deployment:
   containerSecurityContext:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
+  additionalContainers:
+    - name: tailscale-sidebar
+      image: ghcr.io/tailscale/tailscale:latest
+      env:
+        - name: TS_KUBE_SECRET
+          value: tailscale-auth
+        - name: TS_AUTHKEY
+          valueFrom:
+            secretKeyRef:
+              name: tailscale-auth
+              key: TS_AUTHKEY
+        - name: TS_USERSPACE
+          value: "false"
+        # required for MagicDNS
+        - name: TS_ACCEPT_DNS
+          value: 'true'
+        - name: TS_EXTRA_ARGS
+          value: '--advertise-tags=tag:adguard'
+      securityContext:
+        capabilities:
+           add:
+            - NET_ADMIN
   ports:
     # DNS
     - containerPort: 53
@@ -103,9 +125,6 @@ extraObjects:
     metadata:
       name: '{{ include "application.name" $ }}-dns'
       annotations:
-        tailscale.com/expose: "true"
-        tailscale.com/tags: "tag:k8s,tag:adguard"
-        tailscale.com/hostname: adguard-dns
         metallb.io/loadBalancerIPs: 192.168.1.53
         metallb.io/address-pool: adguard-static
     spec:
@@ -121,3 +140,15 @@ extraObjects:
           name: dns-tcp
           protocol: TCP
           targetPort: 53
+  - apiVersion: external-secrets.io/v1
+    kind: ExternalSecret
+    metadata:
+      name: tailscale-auth
+    spec:
+      secretStoreRef:
+        kind: ClusterSecretStore
+        name: 1password
+      data:
+        - secretKey: TS_AUTHKEY
+          remoteRef:
+            key: Tailscale Operator/clientSecret
