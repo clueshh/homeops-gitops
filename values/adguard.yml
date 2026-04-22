@@ -17,7 +17,7 @@ deployment:
     # ||lab.whitworth.nz^$dnsrewrite=NOERROR;A;100.101.57.95,client=100.0.0.0/8
     # https://burakberk.dev/split-horizon-dns-on-adguard-one-domain-two-networks-two-ip-addresses/
     # https://tailscale.com/learn/why-split-dns
-    - name: tailscale-sidebar
+    - name: tailscale-sidecar
       image: ghcr.io/tailscale/tailscale:latest
       env:
         - name: TS_KUBE_SECRET
