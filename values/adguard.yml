@@ -87,7 +87,6 @@ rbac:
     - name: tailscale
       rules:
       - apiGroups: [""]
-        resourceNames: ["tailscale-auth"]
         resources: ["secrets"]
         verbs: ["get", "update", "patch", "create"]
 
