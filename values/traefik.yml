@@ -6,6 +6,9 @@ api:
 
 service:
   annotations:
+    tailscale.com/expose: "true"
+    tailscale.com/tags: "tag:k8s,tag:traefik"
+    tailscale.com/hostname: traefik
     metallb.io/address-pool: homeops-address-pool
 
 # Configure Network Ports and EntryPoints
