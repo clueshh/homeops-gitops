@@ -6,6 +6,9 @@ applicationName: adguard
 # https://tailscale.com/learn/why-split-dns
 deployment:
   enabled: true
+  # tailscale writes to the tailscale-auth secret,
+  # so we need to disable this to prevent restart loops
+  reloadOnChange: false
   image:
     repository: adguard/adguardhome
     tag: v0.107.73
