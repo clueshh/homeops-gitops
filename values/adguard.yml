@@ -16,8 +16,8 @@ deployment:
     - name: tailscale-sidebar
       image: ghcr.io/tailscale/tailscale:latest
       env:
-        # - name: TS_KUBE_SECRET
-        #   value: tailscale-auth
+        - name: TS_KUBE_SECRET
+          value: tailscale-auth
         - name: TS_AUTHKEY
           valueFrom:
             secretKeyRef:
@@ -70,6 +70,18 @@ deployment:
        mountPath: /opt/adguardhome/conf
     adguard-work:
        mountPath: /opt/adguardhome/work
+
+rbac:
+  enabled: true
+  serviceAccount:
+    enabled: true
+  roles:
+    - name: tailscale
+      rules:
+      - apiGroups: [""]
+        resourceNames: ["tailscale-auth"]
+        resources: ["secrets"]
+        verbs: ["get", "update", "patch"]
 
 service:
   enabled: true
