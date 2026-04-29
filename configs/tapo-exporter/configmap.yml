@@ -6,5 +6,5 @@ data:
   # NOTE: Must enable 3rd party compatibility in the Tapo app
   tapo.yaml: |
     devices:
-      homelab: "192.168.1.26"
-      desk: "192.168.1.27"
+      homelab: "192.168.1.2"
+      desk: "192.168.1.3"
