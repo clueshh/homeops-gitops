@@ -4,7 +4,7 @@ deployment:
   enabled: true
   image:
     repository: ghcr.io/kieraneglin/pinchflat
-    tag: 5.1.4
+    tag: latest
   containerSecurityContext:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
