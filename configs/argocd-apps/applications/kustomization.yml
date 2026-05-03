@@ -18,6 +18,7 @@ resources:
   - kube-prometheus-stack.yml
   - longhorn.yml
   - metallb.yml
+  - pinchflat.yml
   - prowlarr.yml
   - qbittorrent.yml
   - radarr.yml
