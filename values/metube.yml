@@ -1,4 +1,4 @@
-applicationName: qbittorrent
+applicationName: metube
 
 deployment:
   enabled: true
@@ -13,6 +13,12 @@ deployment:
       name: http
       protocol: TCP
   env:
+    DELETE_FILE_ON_TRASHCAN:
+      value: "true"
+    DOWNLOAD_DIR:
+      value: /downloads/video
+    AUDIO_DOWNLOAD_DIR:
+      value: /downloads/audio
 
 service:
   enabled: true
