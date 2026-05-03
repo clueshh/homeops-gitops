@@ -1,0 +1,52 @@
+applicationName: qbittorrent
+
+deployment:
+  enabled: true
+  image:
+    repository: ghcr.io/alexta69/metube
+    tag: 2026.04.28
+  containerSecurityContext:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+  ports:
+    - containerPort: 8081
+      name: http
+      protocol: TCP
+  env:
+
+service:
+  enabled: true
+  ports:
+    - port: 8081
+      name: http
+      protocol: TCP
+      targetPort: 8081
+
+persistence:
+  enabled: true
+  mountPVC: true
+  mountPath: /downloads
+  storageClass: longhorn
+  storageSize: 1Gi
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  gatewayNamespace: traefik
+  hostnames:
+    - metube.lab.whitworth.nz
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        # - name: authentik-server
+        #   namespace: authentik
+        #   port: 80
+        - name: '{{ include "application.name" $ }}'
+          port: 8081
