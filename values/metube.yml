@@ -16,9 +16,7 @@ deployment:
     DELETE_FILE_ON_TRASHCAN:
       value: "true"
     DOWNLOAD_DIR:
-      value: /downloads/video
-    AUDIO_DOWNLOAD_DIR:
-      value: /downloads/audio
+      value: /downloads
 
 service:
   enabled: true
